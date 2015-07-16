@@ -12,6 +12,7 @@
 		A0BDB67C1B5767FE00E70654 /* TMDBKit.m in Sources */ = {isa = PBXBuildFile; fileRef = A0BDB67B1B5767FE00E70654 /* TMDBKit.m */; };
 		A0BDB6821B5767FE00E70654 /* libTMDBKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A0BDB6761B5767FE00E70654 /* libTMDBKit.a */; };
 		A0BDB6921B576A1F00E70654 /* TMDBClient.m in Sources */ = {isa = PBXBuildFile; fileRef = A0BDB6911B576A1F00E70654 /* TMDBClient.m */; };
+		F4D90309877A7847B1BEB290 /* libPods-TMDBKitTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AFC0B6A2A461876658FEBB4 /* libPods-TMDBKitTests.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,7 +39,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		28540E31B4A9DE2C57E22388 /* Pods-TMDBKitTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TMDBKitTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TMDBKitTests/Pods-TMDBKitTests.release.xcconfig"; sourceTree = "<group>"; };
 		69E56F22569205D6DE98B981 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		8AFC0B6A2A461876658FEBB4 /* libPods-TMDBKitTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TMDBKitTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8F282BF18D2E7F09B043E925 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		A0BDB6761B5767FE00E70654 /* libTMDBKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libTMDBKit.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0BDB6791B5767FE00E70654 /* TMDBKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TMDBKit.h; sourceTree = "<group>"; };
@@ -49,6 +52,7 @@
 		A0BDB6911B576A1F00E70654 /* TMDBClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMDBClient.m; sourceTree = "<group>"; };
 		A0BDB6931B576A9F00E70654 /* TMDBKit-PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TMDBKit-PrefixHeader.pch"; sourceTree = SOURCE_ROOT; };
 		C9D9D807EB5C5EBB25B0E39D /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		EE79FF21FBB5817D1830ADAE /* Pods-TMDBKitTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TMDBKitTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TMDBKitTests/Pods-TMDBKitTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +69,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A0BDB6821B5767FE00E70654 /* libTMDBKit.a in Frameworks */,
+				F4D90309877A7847B1BEB290 /* libPods-TMDBKitTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -76,6 +81,8 @@
 			children = (
 				C9D9D807EB5C5EBB25B0E39D /* Pods.debug.xcconfig */,
 				8F282BF18D2E7F09B043E925 /* Pods.release.xcconfig */,
+				EE79FF21FBB5817D1830ADAE /* Pods-TMDBKitTests.debug.xcconfig */,
+				28540E31B4A9DE2C57E22388 /* Pods-TMDBKitTests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -132,6 +139,7 @@
 			isa = PBXGroup;
 			children = (
 				69E56F22569205D6DE98B981 /* libPods.a */,
+				8AFC0B6A2A461876658FEBB4 /* libPods-TMDBKitTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -162,9 +170,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A0BDB68D1B5767FE00E70654 /* Build configuration list for PBXNativeTarget "TMDBKitTests" */;
 			buildPhases = (
+				5A0CB9CA972C32A62D63F79B /* Check Pods Manifest.lock */,
 				A0BDB67D1B5767FE00E70654 /* Sources */,
 				A0BDB67E1B5767FE00E70654 /* Frameworks */,
 				A0BDB67F1B5767FE00E70654 /* Resources */,
+				CC26E0B78E873937AF66B0F2 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -237,6 +247,21 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		5A0CB9CA972C32A62D63F79B /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
 		8EC993C52707BB369FDF6C1A /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -250,6 +275,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		CC26E0B78E873937AF66B0F2 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TMDBKitTests/Pods-TMDBKitTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -392,6 +432,7 @@
 		};
 		A0BDB68E1B5767FE00E70654 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EE79FF21FBB5817D1830ADAE /* Pods-TMDBKitTests.debug.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -410,6 +451,7 @@
 		};
 		A0BDB68F1B5767FE00E70654 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 28540E31B4A9DE2C57E22388 /* Pods-TMDBKitTests.release.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (

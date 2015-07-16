@@ -20,9 +20,11 @@ PODS:
   - AFNetworking/UIKit (2.5.4):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
+  - Expecta (1.0.0)
   - Mantle (2.0.2):
     - Mantle/extobjc (= 2.0.2)
   - Mantle/extobjc (2.0.2)
+  - OHHTTPStubs (4.0.2)
   - ReactiveCocoa (2.5):
     - ReactiveCocoa/UI (= 2.5)
   - ReactiveCocoa/Core (2.5):
@@ -30,15 +32,22 @@ PODS:
   - ReactiveCocoa/no-arc (2.5)
   - ReactiveCocoa/UI (2.5):
     - ReactiveCocoa/Core
+  - Specta (1.0.2)
 
 DEPENDENCIES:
   - AFNetworking
+  - Expecta
   - Mantle
+  - OHHTTPStubs
   - ReactiveCocoa
+  - Specta
 
 SPEC CHECKSUMS:
   AFNetworking: 05edc0ac4c4c8cf57bcf4b84be5b0744b6d8e71e
+  Expecta: 32604574add2c46a36f8d2f716b6c5736eb75024
   Mantle: 967fd31ea0220890b2e76589198996b534bb3fb1
+  OHHTTPStubs: dbd1957d414659783e07b49c961940b7564c23d9
   ReactiveCocoa: e2db045570aa97c695e7aa97c2bcab222ae51f4a
+  Specta: 9cec98310dca411f7c7ffd6943552b501622abfe
 
 COCOAPODS: 0.37.2

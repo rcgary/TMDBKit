@@ -217,7 +217,7 @@
                 }
                 return;
             }
-            
+            //TODO: Need update the response model
             //            NSAssert([parsedObject isKindOfClass:KSObject.class], @"Parsed model object is not an KSObject: %@", parsedObject);
             
             [subscriber sendNext:parsedObject];
