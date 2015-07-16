@@ -1,0 +1,17 @@
+//
+//  TMDBKit-PrefixHeader.pch
+//  TMDBKit
+//
+//  Created by Chao Ruan on 16/07/2015.
+//  Copyright (c) 2015 Chao Ruan. All rights reserved.
+//
+
+#ifndef TMDBKit_TMDBKit_PrefixHeader_pch
+#define TMDBKit_TMDBKit_PrefixHeader_pch
+#import <ReactiveCocoa.h>
+#import <Mantle.h>
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+#endif
