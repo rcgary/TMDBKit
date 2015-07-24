@@ -1,0 +1,6 @@
+module Specta {
+  umbrella header "Specta-umbrella.h"
+
+  export *
+  module * { export * }
+}

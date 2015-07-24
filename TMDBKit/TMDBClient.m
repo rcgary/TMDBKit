@@ -8,7 +8,22 @@
 
 #import "TMDBClient.h"
 
+
+@interface TMDBClient ()
+@property (nonatomic, strong)NSString *apiKey;
+@end
+
+static NSString *dominURLString = @"http://api.themoviedb.org/3";
+
 @implementation TMDBClient
+
++ (instancetype)clientWIthAPIKey:(NSString*)apiKey
+{
+  TMDBClient *client = [TMDBClient clientWithBaseURL:dominURLString];
+  client.apiKey = apiKey;
+  return client;
+}
+
 + (instancetype)clientWithBaseURL:(NSString *)baseURL
 {
     TMDBClient *client = [[TMDBClient alloc]initWithBaseURL:[NSURL URLWithString:baseURL]];
@@ -107,7 +122,7 @@
 - (NSMutableURLRequest *)requestWithMethod:(NSString *)method path:(NSString *)path parameters:(NSDictionary *)parameters pageing:(BOOL)pageing {
     NSParameterAssert(method != nil);
     
-    parameters = [parameters ?: [NSDictionary dictionary] mtl_dictionaryByAddingEntriesFromDictionary:@{ @"api_key": @"2449630792c1f2e7c806b4ab2ee826b5"}];
+    parameters = [parameters ?: [NSDictionary dictionary] mtl_dictionaryByAddingEntriesFromDictionary:@{ @"api_key": self.apiKey}];
     if (pageing) {
         // If it's pageing, will pass the pageing parameter, start on first page
         parameters = [parameters mtl_dictionaryByAddingEntriesFromDictionary:@{@"page": @1}];
@@ -158,7 +173,8 @@
             setNameWithFormat:@"-enqueueRequest: %@ fetchAllPages: %i", request, (int)fetchAllPages];
 }
 
-- (RACSignal *)enqueueRequest:(NSURLRequest *)request resultClass:(Class)resultClass fetchAllPages:(BOOL)fetchAllPages {
+- (RACSignal *)enqueueRequest:(NSURLRequest *)request resultClass:(Class)resultClass fetchAllPages:(BOOL)fetchAllPages
+{
     return [[[self
               enqueueRequest:request fetchAllPages:fetchAllPages]
              reduceEach:^(NSHTTPURLResponse *response, id responseObject) {
@@ -182,7 +198,7 @@
     NSTextCheckingResult *result = [relPattern firstMatchInString:urlString options:0 range:NSMakeRange(0, urlString.length)];
     
     if (result) {
-        NSRange range = [result rangeAtIndex:1];
+        NSRange range = [result rangeAtIndex:0];
         NSString *string = [urlString substringWithRange:range];
         NSString *pageString = [string stringByReplacingOccurrencesOfString:@"page=" withString:@""];
         NSInteger page = pageString.integerValue + 1;

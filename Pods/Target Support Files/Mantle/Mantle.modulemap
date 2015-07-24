@@ -1,0 +1,11 @@
+module Mantle {
+  umbrella header "Mantle-umbrella.h"
+
+  export *
+  module * { export * }
+
+  private header "EXTKeyPathCoding.h"
+  private header "EXTRuntimeExtensions.h"
+  private header "EXTScope.h"
+  private header "metamacros.h"
+}

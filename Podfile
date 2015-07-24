@@ -6,7 +6,7 @@ pod 'ReactiveCocoa'
 pod 'Mantle'
 pod 'AFNetworking'
 
-target :TMDBKitTests, :exclusive => true do
+target :TMDBKitTests do
   pod 'Specta'
   pod 'Expecta'
   pod 'OHHTTPStubs'
