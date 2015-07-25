@@ -9,5 +9,8 @@
 #import <Foundation/Foundation.h>
 #import <Mantle/Mantle.h>
 @interface TMDBPageResponse :  MTLModel <MTLJSONSerializing>
-@property (nonatomic, copy, readonly) NSArray *changeKeys;
+@property (nonatomic, copy, readonly) NSArray *results;
+@property (nonatomic, assign, readonly) NSInteger page;
+@property (nonatomic, assign, readonly) NSInteger totalPages;
+@property (nonatomic, assign, readonly) NSInteger totalResults;
 @end

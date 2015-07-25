@@ -11,6 +11,9 @@
 @implementation TMDBPageResponse
 + (NSDictionary *)JSONKeyPathsByPropertyKey
 {
-  return @{ @"changeKeys" : @"change_keys" };
+  return @{
+           @"totalPages" : @"total_pages",
+           @"totalResults" : @"totalResults",
+            };
 }
 @end
