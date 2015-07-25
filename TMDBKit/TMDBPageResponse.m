@@ -13,7 +13,9 @@
 {
   return @{
            @"totalPages" : @"total_pages",
-           @"totalResults" : @"totalResults",
+           @"totalResults" : @"total_results",
+           @"objects" : @"results",
+           @"page" : @"page",
             };
 }
 @end
