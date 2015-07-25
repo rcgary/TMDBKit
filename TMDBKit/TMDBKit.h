@@ -10,6 +10,7 @@
 
 #import "TMDBObject.h"
 #import "TMDBMovie.h"
+#import "TMDBUser.h"
 
 #import "TMDBPageResponse.h"
 #import "TMDBConfigurationResponse.h"
