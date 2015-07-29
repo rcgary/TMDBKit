@@ -11,28 +11,33 @@
 SpecBegin(TMDBSpec)
 
 describe(@"TMDBSpec", ^{
-//  NSString *apikey = @"2449630792c1f2e7c806b4ab2ee826b5";
-//  TMDBClient *client = [TMDBClient clientWIthAPIKey:apikey];
-  
-  beforeAll(^{
+    NSString *apikey = @"2449630792c1f2e7c806b4ab2ee826b5";
+    TMDBClient *client = [TMDBClient clientWithAPIKey:apikey];
+    __block NSError*error;
     
-  });
-  
-  beforeEach(^{
+    beforeAll(^{
+        error = nil;
+        
+    });
     
-  });
-  
-  it(@"just a test", ^{
+    beforeEach(^{
+        
+    });
     
-  });
-  
-  afterEach(^{
+    it(@"just a test", ^{
+        RACSignal *signal = [TMDBClient loginAsGusestWithClient:client];
+        BOOL result = [signal asynchronouslyWaitUntilCompleted:&error];
+        expect(result).to.beTruthy();
+        expect(error).to.beNil();
+    });
     
-  });
-  
-  afterAll(^{
+    afterEach(^{
+        
+    });
     
-  });
+    afterAll(^{
+        
+    });
 });
 
 SpecEnd

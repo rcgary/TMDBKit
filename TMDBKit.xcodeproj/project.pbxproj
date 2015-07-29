@@ -10,6 +10,9 @@
 		1A3832DE48A3489AD51A9D78 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 69E56F22569205D6DE98B981 /* libPods.a */; };
 		689DA2AB1B625D1200777DCA /* TMDBSpecSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 689DA2AA1B625D1200777DCA /* TMDBSpecSpec.m */; };
 		689DA2AE1B625DD800777DCA /* TMDBTestHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 689DA2AD1B625DD800777DCA /* TMDBTestHelper.m */; };
+		68B9F8CD1B68D310006758C2 /* TMDBClient+Authentication.m in Sources */ = {isa = PBXBuildFile; fileRef = 68B9F8CC1B68D310006758C2 /* TMDBClient+Authentication.m */; };
+		68B9F8D01B68D8A4006758C2 /* TMDBTokenResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 68B9F8CF1B68D8A4006758C2 /* TMDBTokenResponse.m */; };
+		68B9F8D31B68E568006758C2 /* TMDBGuestSessionResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 68B9F8D21B68E568006758C2 /* TMDBGuestSessionResponse.m */; };
 		68D7EDCD1B626AC6005F9855 /* TMDBPageResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 68D7EDCC1B626AC6005F9855 /* TMDBPageResponse.m */; };
 		68D7EDD01B626B6D005F9855 /* TMDBImageConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 68D7EDCF1B626B6D005F9855 /* TMDBImageConfiguration.m */; };
 		68D7EDD31B626DB0005F9855 /* TMDBConfigurationResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 68D7EDD21B626DB0005F9855 /* TMDBConfigurationResponse.m */; };
@@ -58,6 +61,12 @@
 		689DA2AA1B625D1200777DCA /* TMDBSpecSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMDBSpecSpec.m; sourceTree = "<group>"; };
 		689DA2AC1B625DD800777DCA /* TMDBTestHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMDBTestHelper.h; sourceTree = "<group>"; };
 		689DA2AD1B625DD800777DCA /* TMDBTestHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMDBTestHelper.m; sourceTree = "<group>"; };
+		68B9F8CB1B68D310006758C2 /* TMDBClient+Authentication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TMDBClient+Authentication.h"; sourceTree = "<group>"; };
+		68B9F8CC1B68D310006758C2 /* TMDBClient+Authentication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TMDBClient+Authentication.m"; sourceTree = "<group>"; };
+		68B9F8CE1B68D8A4006758C2 /* TMDBTokenResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMDBTokenResponse.h; sourceTree = "<group>"; };
+		68B9F8CF1B68D8A4006758C2 /* TMDBTokenResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMDBTokenResponse.m; sourceTree = "<group>"; };
+		68B9F8D11B68E568006758C2 /* TMDBGuestSessionResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMDBGuestSessionResponse.h; sourceTree = "<group>"; };
+		68B9F8D21B68E568006758C2 /* TMDBGuestSessionResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMDBGuestSessionResponse.m; sourceTree = "<group>"; };
 		68D7EDCB1B626AC6005F9855 /* TMDBPageResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMDBPageResponse.h; sourceTree = "<group>"; };
 		68D7EDCC1B626AC6005F9855 /* TMDBPageResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMDBPageResponse.m; sourceTree = "<group>"; };
 		68D7EDCE1B626B6D005F9855 /* TMDBImageConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMDBImageConfiguration.h; sourceTree = "<group>"; };
@@ -146,6 +155,10 @@
 				68D7EDD21B626DB0005F9855 /* TMDBConfigurationResponse.m */,
 				68D7EDCB1B626AC6005F9855 /* TMDBPageResponse.h */,
 				68D7EDCC1B626AC6005F9855 /* TMDBPageResponse.m */,
+				68B9F8CE1B68D8A4006758C2 /* TMDBTokenResponse.h */,
+				68B9F8CF1B68D8A4006758C2 /* TMDBTokenResponse.m */,
+				68B9F8D11B68E568006758C2 /* TMDBGuestSessionResponse.h */,
+				68B9F8D21B68E568006758C2 /* TMDBGuestSessionResponse.m */,
 			);
 			name = Response;
 			sourceTree = "<group>";
@@ -186,6 +199,8 @@
 				A0BDB6791B5767FE00E70654 /* TMDBKit.h */,
 				A0BDB6901B576A1F00E70654 /* TMDBClient.h */,
 				A0BDB6911B576A1F00E70654 /* TMDBClient.m */,
+				68B9F8CB1B68D310006758C2 /* TMDBClient+Authentication.h */,
+				68B9F8CC1B68D310006758C2 /* TMDBClient+Authentication.m */,
 				68D7EDE41B638C9F005F9855 /* Object */,
 				68D7EDE51B638CB7005F9855 /* Response */,
 				A0BDB6931B576A9F00E70654 /* TMDBKit-PrefixHeader.pch */,
@@ -388,10 +403,13 @@
 				68D7EDD31B626DB0005F9855 /* TMDBConfigurationResponse.m in Sources */,
 				68D7EDCD1B626AC6005F9855 /* TMDBPageResponse.m in Sources */,
 				68D7EDEC1B63B1C7005F9855 /* TMDBUser.m in Sources */,
+				68B9F8D31B68E568006758C2 /* TMDBGuestSessionResponse.m in Sources */,
 				68D7EDDE1B636931005F9855 /* TMDBMovie.m in Sources */,
+				68B9F8D01B68D8A4006758C2 /* TMDBTokenResponse.m in Sources */,
 				68D7EDD01B626B6D005F9855 /* TMDBImageConfiguration.m in Sources */,
 				A0BDB6921B576A1F00E70654 /* TMDBClient.m in Sources */,
 				68D7EDE11B636A44005F9855 /* TMDBObject.m in Sources */,
+				68B9F8CD1B68D310006758C2 /* TMDBClient+Authentication.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -455,7 +473,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "";
@@ -492,7 +510,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				OTHER_LDFLAGS = "";
 				SDKROOT = iphoneos;

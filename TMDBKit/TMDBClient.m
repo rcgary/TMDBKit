@@ -7,21 +7,27 @@
 //
 
 #import "TMDBClient.h"
-
+#import "TMDBUser.h"
+#import "TMDBClient+Authentication.h"
 
 @interface TMDBClient ()
+// shadow property for write acces
+@property (nonatomic, copy, readwrite) NSString *sessionID;
+@property (nonatomic, copy, readwrite) NSString *username;
+
 @property (nonatomic, strong)NSString *apiKey;
 @end
 
+static NSString *apikey = @"2449630792c1f2e7c806b4ab2ee826b5";
 static NSString *dominURLString = @"http://api.themoviedb.org/3";
 
 @implementation TMDBClient
 
-+ (instancetype)clientWIthAPIKey:(NSString*)apiKey
++ (instancetype)clientWithAPIKey:(NSString*)apiKey
 {
-  TMDBClient *client = [TMDBClient clientWithBaseURL:dominURLString];
-  client.apiKey = apiKey;
-  return client;
+    TMDBClient *client = [TMDBClient clientWithBaseURL:dominURLString];
+    client.apiKey = apiKey;
+    return client;
 }
 
 + (instancetype)clientWithBaseURL:(NSString *)baseURL
@@ -30,7 +36,84 @@ static NSString *dominURLString = @"http://api.themoviedb.org/3";
     return client;
 }
 
+
++ (instancetype)clientWithSessionID:(NSString*)sessionID username:(NSString*)username
+{
+    TMDBClient *client = [TMDBClient clientWithAPIKey:apikey];
+    client.sessionID = sessionID;
+    client.username = username;
+    return client;
+}
+
 #pragma mark - Public Methods
+
+- (RACSignal*)updateGuestSessionID:(NSString*)sessionID
+{
+    return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+        self.sessionID = sessionID;
+        [subscriber sendCompleted];
+        
+        // nothing to dispose
+        return nil;
+    }];
+    
+}
+- (RACSignal*)updateSessionID:(NSString*)sessionID username:(NSString*)username
+{
+    return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+        self.sessionID = sessionID;
+        self.username = username;
+        
+        NSURLCredential *credential = [[NSURLCredential alloc] initWithUser:username
+                                                                   password:sessionID
+                                                                persistence:NSURLCredentialPersistencePermanent];
+        [NSURLCredentialStorage.sharedCredentialStorage setDefaultCredential:credential
+                                                          forProtectionSpace:[self.class protectionSpace]];
+        
+        [subscriber sendCompleted];
+        
+        // nothing to dispose
+        return nil;
+    }];
+}
+
++ (RACSignal*)restoreCredential
+{
+    NSURLCredential *credential = [NSURLCredentialStorage.sharedCredentialStorage defaultCredentialForProtectionSpace:[self protectionSpace]];
+    
+    if (credential == nil || !credential.hasPassword) return [RACSignal empty];
+    
+    return [RACSignal return:credential];
+}
+
+- (RACSignal *)removeCredential
+{
+    if (!self.sessionID) return [RACSignal empty];
+    
+    return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+        self.sessionID = nil;
+        self.username = nil;
+        
+        NSDictionary *credentialsDict = [NSURLCredentialStorage.sharedCredentialStorage credentialsForProtectionSpace:self.class.protectionSpace];
+        NSURLCredential *credential = [credentialsDict.objectEnumerator nextObject];
+        [NSURLCredentialStorage.sharedCredentialStorage removeCredential:credential forProtectionSpace:self.class.protectionSpace];
+        
+        [subscriber sendCompleted];
+        
+        // nothing to dispose
+        return nil;
+        
+    }];
+}
+
++ (NSURLProtectionSpace *)protectionSpace
+{
+    return [[NSURLProtectionSpace alloc] initWithHost:@"*.chaoruan.me"
+                                                 port:80
+                                             protocol:NSURLProtectionSpaceHTTP
+                                                realm:nil
+                                 authenticationMethod:nil];
+}
 
 - (RACSignal *)GET:(NSString *)URLString parameters:(id)parameters resultClass:(Class)resultClass
 {
@@ -38,11 +121,11 @@ static NSString *dominURLString = @"http://api.themoviedb.org/3";
     RACSignal *operationSignal = [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
         AFHTTPRequestOperation *operation = [self GET:URLString parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
             [subscriber sendNext:responseObject];
-
+            
             [subscriber sendCompleted];
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-          
-                [subscriber sendError:error];
+            
+            [subscriber sendError:error];
         }];
         return [RACDisposable disposableWithBlock:^{
             [operation cancel];
@@ -154,7 +237,7 @@ static NSString *dominURLString = @"http://api.themoviedb.org/3";
             }
             
             [[[RACSignal
-               return:RACTuplePack(operation.response, responseObject)]
+               return:responseObject]
               concat:nextPageSignal]
              subscribe:subscriber];
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -175,11 +258,11 @@ static NSString *dominURLString = @"http://api.themoviedb.org/3";
 
 - (RACSignal *)enqueueRequest:(NSURLRequest *)request resultClass:(Class)resultClass fetchAllPages:(BOOL)fetchAllPages
 {
-    return [[[self
-              enqueueRequest:request fetchAllPages:fetchAllPages]
-             reduceEach:^(NSHTTPURLResponse *response, id responseObject) {
-                 return [self parsedResponseOfClass:resultClass fromJSON:responseObject];
-             }] concat];
+    return [[self
+             enqueueRequest:request fetchAllPages:fetchAllPages]
+            flattenMap:^RACStream *(id responseObject) {
+                return [self parsedResponseOfClass:resultClass fromJSON:responseObject];
+            }];
 }
 
 - (RACSignal *)enqueueRequest:(NSURLRequest *)request resultClass:(Class)resultClass
@@ -204,7 +287,7 @@ static NSString *dominURLString = @"http://api.themoviedb.org/3";
         NSInteger page = pageString.integerValue + 1;
         page = page >= 1000 ? 1000 : page;
         urlString = [urlString stringByReplacingCharactersInRange:range
-                                           withString:[NSString stringWithFormat:@"page=%ld",(long)page]];
+                                                       withString:[NSString stringWithFormat:@"page=%ld",(long)page]];
         nextPageURLRequest.URL = [NSURL URLWithString:urlString];
         return nextPageURLRequest;
     }

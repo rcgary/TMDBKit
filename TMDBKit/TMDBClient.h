@@ -13,7 +13,8 @@
 
 @interface TMDBClient : AFHTTPRequestOperationManager
 
-+ (instancetype)clientWIthAPIKey:(NSString*)apiKey;
++ (instancetype)clientWithSessionID:(NSString*)sessionID username:(NSString*)username;
++ (instancetype)clientWithAPIKey:(NSString*)apiKey;
 /**
  *  Get call for key sotne api, the reuslt will be cached, the cached key will be
  *  string of class name + URLString
@@ -26,4 +27,10 @@
 - (NSMutableURLRequest *)requestWithMethod:(NSString *)method path:(NSString *)path parameters:(NSDictionary *)parameters pageing:(BOOL)pageing;
 - (RACSignal *)enqueueRequest:(NSURLRequest *)request fetchAllPages:(BOOL)fetchAllPages;
 - (RACSignal *)enqueueRequest:(NSURLRequest *)request resultClass:(Class)resultClass fetchAllPages:(BOOL)fetchAllPages;
+
+
+- (RACSignal *)updateGuestSessionID:(NSString*)sessionID;
+- (RACSignal *)updateSessionID:(NSString*)sessionID username:(NSString*)username;
+- (RACSignal *)removeCredential;
++ (RACSignal *)restoreCredential;
 @end

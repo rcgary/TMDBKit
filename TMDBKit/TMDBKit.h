@@ -12,6 +12,9 @@
 #import "TMDBMovie.h"
 #import "TMDBUser.h"
 
+#import "TMDBClient+Authentication.h"
+
 #import "TMDBPageResponse.h"
 #import "TMDBConfigurationResponse.h"
 #import "TMDBImageConfiguration.h"
+#import "TMDBTokenResponse.h"
