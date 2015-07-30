@@ -36,6 +36,10 @@ static NSString *dominURLString = @"http://api.themoviedb.org/3";
     return client;
 }
 
++ (instancetype)client
+{
+   return [TMDBClient clientWithAPIKey:apikey];
+}
 
 + (instancetype)clientWithSessionID:(NSString*)sessionID username:(NSString*)username
 {
@@ -46,6 +50,11 @@ static NSString *dominURLString = @"http://api.themoviedb.org/3";
 }
 
 #pragma mark - Public Methods
+
+- (BOOL)isAuthenticated
+{
+    return self.sessionID != nil;
+}
 
 - (RACSignal*)updateGuestSessionID:(NSString*)sessionID
 {

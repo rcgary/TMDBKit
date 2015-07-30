@@ -18,3 +18,4 @@
 #import "TMDBConfigurationResponse.h"
 #import "TMDBImageConfiguration.h"
 #import "TMDBTokenResponse.h"
+#import "TMDBGuestSessionResponse.h"

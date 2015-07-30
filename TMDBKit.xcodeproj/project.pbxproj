@@ -13,6 +13,8 @@
 		68B9F8CD1B68D310006758C2 /* TMDBClient+Authentication.m in Sources */ = {isa = PBXBuildFile; fileRef = 68B9F8CC1B68D310006758C2 /* TMDBClient+Authentication.m */; };
 		68B9F8D01B68D8A4006758C2 /* TMDBTokenResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 68B9F8CF1B68D8A4006758C2 /* TMDBTokenResponse.m */; };
 		68B9F8D31B68E568006758C2 /* TMDBGuestSessionResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 68B9F8D21B68E568006758C2 /* TMDBGuestSessionResponse.m */; };
+		68B9F8D51B6A2A49006758C2 /* AuthenticationSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 68B9F8D41B6A2A48006758C2 /* AuthenticationSpec.m */; };
+		68B9F8D81B6A3356006758C2 /* TMDBStubber.m in Sources */ = {isa = PBXBuildFile; fileRef = 68B9F8D71B6A3356006758C2 /* TMDBStubber.m */; };
 		68D7EDCD1B626AC6005F9855 /* TMDBPageResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 68D7EDCC1B626AC6005F9855 /* TMDBPageResponse.m */; };
 		68D7EDD01B626B6D005F9855 /* TMDBImageConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 68D7EDCF1B626B6D005F9855 /* TMDBImageConfiguration.m */; };
 		68D7EDD31B626DB0005F9855 /* TMDBConfigurationResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 68D7EDD21B626DB0005F9855 /* TMDBConfigurationResponse.m */; };
@@ -67,6 +69,9 @@
 		68B9F8CF1B68D8A4006758C2 /* TMDBTokenResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMDBTokenResponse.m; sourceTree = "<group>"; };
 		68B9F8D11B68E568006758C2 /* TMDBGuestSessionResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMDBGuestSessionResponse.h; sourceTree = "<group>"; };
 		68B9F8D21B68E568006758C2 /* TMDBGuestSessionResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMDBGuestSessionResponse.m; sourceTree = "<group>"; };
+		68B9F8D41B6A2A48006758C2 /* AuthenticationSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthenticationSpec.m; sourceTree = "<group>"; };
+		68B9F8D61B6A3356006758C2 /* TMDBStubber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMDBStubber.h; sourceTree = "<group>"; };
+		68B9F8D71B6A3356006758C2 /* TMDBStubber.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMDBStubber.m; sourceTree = "<group>"; };
 		68D7EDCB1B626AC6005F9855 /* TMDBPageResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMDBPageResponse.h; sourceTree = "<group>"; };
 		68D7EDCC1B626AC6005F9855 /* TMDBPageResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMDBPageResponse.m; sourceTree = "<group>"; };
 		68D7EDCE1B626B6D005F9855 /* TMDBImageConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMDBImageConfiguration.h; sourceTree = "<group>"; };
@@ -220,7 +225,10 @@
 				68D7EDED1B63B6DE005F9855 /* TMDBUserSpecSpec.m */,
 				689DA2AC1B625DD800777DCA /* TMDBTestHelper.h */,
 				689DA2AD1B625DD800777DCA /* TMDBTestHelper.m */,
+				68B9F8D61B6A3356006758C2 /* TMDBStubber.h */,
+				68B9F8D71B6A3356006758C2 /* TMDBStubber.m */,
 				68D7EDF11B63B888005F9855 /* Stubs */,
+				68B9F8D41B6A2A48006758C2 /* AuthenticationSpec.m */,
 			);
 			path = TMDBKitTests;
 			sourceTree = "<group>";
@@ -418,7 +426,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				689DA2AE1B625DD800777DCA /* TMDBTestHelper.m in Sources */,
+				68B9F8D51B6A2A49006758C2 /* AuthenticationSpec.m in Sources */,
 				68D7EDE31B63707D005F9855 /* TMDBMovieSpecSpec.m in Sources */,
+				68B9F8D81B6A3356006758C2 /* TMDBStubber.m in Sources */,
 				68D7EDE71B638E55005F9855 /* TMDBPageResponseSpecSpec.m in Sources */,
 				68D7EDEE1B63B6DE005F9855 /* TMDBUserSpecSpec.m in Sources */,
 				68D7EDD51B626F4D005F9855 /* TMDBImageConfigurationSpecSpec.m in Sources */,

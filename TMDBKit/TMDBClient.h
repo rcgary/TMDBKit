@@ -13,6 +13,9 @@
 
 @interface TMDBClient : AFHTTPRequestOperationManager
 
+@property (nonatomic, getter = isAuthenticated, readonly) BOOL authenticated;
+
++ (instancetype)client;
 + (instancetype)clientWithSessionID:(NSString*)sessionID username:(NSString*)username;
 + (instancetype)clientWithAPIKey:(NSString*)apiKey;
 /**

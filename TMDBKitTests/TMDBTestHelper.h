@@ -10,6 +10,7 @@
 #import "Specta.h"
 #import "TMDBKit.h"
 #import "Expecta.h"
+#import "TMDBStubber.h"
 
 @interface TMDBTestHelper : NSObject
 
