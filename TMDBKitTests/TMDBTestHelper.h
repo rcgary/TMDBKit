@@ -15,4 +15,5 @@
 @interface TMDBTestHelper : NSObject
 
 + (NSDictionary*)jsonDictonaryFromClass:(Class)class;
++ (TMDBClient*)testClient;
 @end

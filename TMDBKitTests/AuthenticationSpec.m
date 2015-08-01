@@ -15,8 +15,6 @@ describe(@"Authentication", ^{
     __block BOOL success;
     __block NSError *error;
     __block TMDBClient *client;
-    beforeAll(^{
-    });
     
     beforeEach(^{
         client = [TMDBClient client];
@@ -40,10 +38,12 @@ describe(@"Authentication", ^{
                                           @"success": @YES,
                                           @"session_id": @"0dcf0e46bf1ab29cbd9718babac91d6fe39da337"
                                           };
+        NSDictionary *accountResponse = [TMDBTestHelper jsonDictonaryFromClass:TMDBUser.class];
         
         [TMDBStubber stubResponseWithPath:@"authentication/token/new" responseObject:newTokenResponse];
         [TMDBStubber stubResponseWithPath:@"authentication/token/validate_with_login" responseObject:tokenResponse];
         [TMDBStubber stubResponseWithPath:@"authentication/session/new" responseObject:sessionResponse];
+        [TMDBStubber stubResponseWithPath:@"account" responseObject:accountResponse];
         
         RACSignal *signal = [TMDBClient loginWithUsername:@"username" password:@"password" client:client];
         TMDBClient *authenticatedClient = [signal asynchronousFirstOrDefault:nil success:&success error:&error];
@@ -51,6 +51,7 @@ describe(@"Authentication", ^{
         expect(error).to.beNil();
         expect(authenticatedClient).notTo.beNil();
         expect(authenticatedClient.isAuthenticated).to.beTruthy();
+        expect(authenticatedClient.user).notTo.beNil();
     });
     
     it(@"should login as guest", ^{

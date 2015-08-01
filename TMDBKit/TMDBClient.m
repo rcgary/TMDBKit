@@ -13,7 +13,7 @@
 @interface TMDBClient ()
 // shadow property for write acces
 @property (nonatomic, copy, readwrite) NSString *sessionID;
-@property (nonatomic, copy, readwrite) NSString *username;
+@property (nonatomic, copy, readwrite) TMDBUser *user;
 
 @property (nonatomic, strong)NSString *apiKey;
 @end
@@ -41,11 +41,11 @@ static NSString *dominURLString = @"http://api.themoviedb.org/3";
    return [TMDBClient clientWithAPIKey:apikey];
 }
 
-+ (instancetype)clientWithSessionID:(NSString*)sessionID username:(NSString*)username
++ (instancetype)clientWithSessionID:(NSString*)sessionID user:(TMDBUser*)user
 {
     TMDBClient *client = [TMDBClient clientWithAPIKey:apikey];
     client.sessionID = sessionID;
-    client.username = username;
+    client.user = user;
     return client;
 }
 
@@ -56,24 +56,28 @@ static NSString *dominURLString = @"http://api.themoviedb.org/3";
     return self.sessionID != nil;
 }
 
-- (RACSignal*)updateGuestSessionID:(NSString*)sessionID
+- (void)updateGuestSessionID:(NSString*)sessionID
 {
-    return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
-        self.sessionID = sessionID;
-        [subscriber sendCompleted];
-        
-        // nothing to dispose
-        return nil;
-    }];
-    
+    self.sessionID = sessionID;
 }
-- (RACSignal*)updateSessionID:(NSString*)sessionID username:(NSString*)username
+
+- (void)updateSessionID:(NSString*)sessionID
+{
+    self.sessionID = sessionID;
+}
+
+- (void)updateUser:(TMDBUser*)user
+{
+    self.user = user;
+}
+
+- (RACSignal*)updateSessionID:(NSString*)sessionID user:(TMDBUser*)user
 {
     return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
         self.sessionID = sessionID;
-        self.username = username;
+        self.user = user;
         
-        NSURLCredential *credential = [[NSURLCredential alloc] initWithUser:username
+        NSURLCredential *credential = [[NSURLCredential alloc] initWithUser:user.name
                                                                    password:sessionID
                                                                 persistence:NSURLCredentialPersistencePermanent];
         [NSURLCredentialStorage.sharedCredentialStorage setDefaultCredential:credential
@@ -101,7 +105,7 @@ static NSString *dominURLString = @"http://api.themoviedb.org/3";
     
     return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
         self.sessionID = nil;
-        self.username = nil;
+        self.user = nil;
         
         NSDictionary *credentialsDict = [NSURLCredentialStorage.sharedCredentialStorage credentialsForProtectionSpace:self.class.protectionSpace];
         NSURLCredential *credential = [credentialsDict.objectEnumerator nextObject];
@@ -218,6 +222,10 @@ static NSString *dominURLString = @"http://api.themoviedb.org/3";
     if (pageing) {
         // If it's pageing, will pass the pageing parameter, start on first page
         parameters = [parameters mtl_dictionaryByAddingEntriesFromDictionary:@{@"page": @1}];
+    }
+    
+    if (self.isAuthenticated) {
+        parameters = [parameters mtl_dictionaryByAddingEntriesFromDictionary:@{@"session_id": self.sessionID}];
     }
     
     NSMutableURLRequest *request = [self.requestSerializer requestWithMethod:method

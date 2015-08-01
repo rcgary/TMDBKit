@@ -11,12 +11,14 @@
 #import <AFNetworking/AFNetworking.h>
 #import <Mantle/Mantle.h>
 
+@class TMDBUser;
 @interface TMDBClient : AFHTTPRequestOperationManager
 
 @property (nonatomic, getter = isAuthenticated, readonly) BOOL authenticated;
+@property (nonatomic, copy, readonly) TMDBUser *user;
 
 + (instancetype)client;
-+ (instancetype)clientWithSessionID:(NSString*)sessionID username:(NSString*)username;
++ (instancetype)clientWithSessionID:(NSString*)sessionID user:(TMDBUser*)user;
 + (instancetype)clientWithAPIKey:(NSString*)apiKey;
 /**
  *  Get call for key sotne api, the reuslt will be cached, the cached key will be
@@ -32,8 +34,11 @@
 - (RACSignal *)enqueueRequest:(NSURLRequest *)request resultClass:(Class)resultClass fetchAllPages:(BOOL)fetchAllPages;
 
 
-- (RACSignal *)updateGuestSessionID:(NSString*)sessionID;
-- (RACSignal *)updateSessionID:(NSString*)sessionID username:(NSString*)username;
+- (void)updateGuestSessionID:(NSString*)sessionID;
+- (void)updateSessionID:(NSString*)sessionID;
+- (void)updateUser:(TMDBUser*)user;
+
+- (RACSignal *)updateSessionID:(NSString*)sessionID user:(TMDBUser*)user;
 - (RACSignal *)removeCredential;
 + (RACSignal *)restoreCredential;
 @end

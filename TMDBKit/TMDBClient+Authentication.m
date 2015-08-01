@@ -9,6 +9,7 @@
 #import "TMDBClient+Authentication.h"
 #import "TMDBTokenResponse.h"
 #import "TMDBGuestSessionResponse.h"
+#import "TMDBClient+Account.h"
 
 @implementation TMDBClient (Authentication)
 
@@ -21,7 +22,7 @@
 + (RACSignal*)loginWithUsername:(NSString*)username password:(NSString*)password client:(TMDBClient*)client
 {
     __block NSString *request_token;
-    return [[[[client newToken] flattenMap:^RACStream *(TMDBTokenResponse *tokenResponse) {
+    return [[[[[client newToken] flattenMap:^RACStream *(TMDBTokenResponse *tokenResponse) {
         request_token = tokenResponse.token;
         NSDictionary *parameters = NSDictionaryOfVariableBindings(username,password,request_token);
         NSURLRequest *request = [client requestWithMethod:@"GET" path:@"authentication/token/validate_with_login" parameters:parameters pageing:NO];
@@ -32,8 +33,11 @@
         NSURLRequest *request = [client requestWithMethod:@"GET" path:@"authentication/session/new" parameters:parameters pageing:NO];
         return [client enqueueRequest:request resultClass:TMDBTokenResponse.class fetchAllPages:NO];
     }] flattenMap:^RACStream *(TMDBTokenResponse *tokenResponse) {
-        return [[client updateSessionID:tokenResponse.sessionID username:username]
-                concat:[RACSignal return:client]];
+        [client updateSessionID:tokenResponse.sessionID];
+        return [client userAccount];
+    }]flattenMap:^RACStream *(TMDBUser *user) {
+        [client updateUser:user];
+        return [RACSignal return:client];
     }];
 }
 
@@ -41,15 +45,15 @@
 {
     NSURLRequest *request = [client requestWithMethod:@"GET" path:@"authentication/guest_session/new" parameters:nil pageing:NO];
     return [[client enqueueRequest:request resultClass:TMDBGuestSessionResponse.class fetchAllPages:NO]flattenMap:^RACStream *(TMDBGuestSessionResponse *response) {
-        return [[client updateGuestSessionID:response.sessionID]
-                concat:[RACSignal return:RACTuplePack(client, response)]];
+        [client updateGuestSessionID:response.sessionID];
+        return [RACSignal return:RACTuplePack(client, response)];
     }];
 }
 
 + (RACSignal *)authenticatedClientWithSavedCredentials
 {
     return [[self restoreCredential] flattenMap:^RACStream *(NSURLCredential *credential) {
-        TMDBClient *client = [TMDBClient clientWithSessionID:credential.password username:credential.user];
+        TMDBClient *client = [TMDBClient clientWithSessionID:credential.password user:nil];
         return [RACSignal return:client];
     }];
 }

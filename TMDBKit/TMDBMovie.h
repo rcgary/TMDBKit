@@ -12,6 +12,8 @@
 @property (nonatomic, assign, readonly) BOOL adult;
 @property (nonatomic, copy, readonly) NSString *backdropPath;
 @property (nonatomic, copy, readonly) NSArray *genreIDs;
+@property (nonatomic, copy, readonly) NSArray *genres;
+
 @property (nonatomic, copy, readonly) NSString *originalLanguage;
 @property (nonatomic, copy, readonly) NSString *movieDescription;
 @property (nonatomic, copy, readonly) NSString *originalTitle;
@@ -22,4 +24,7 @@
 @property (nonatomic, assign, readonly) BOOL video;
 @property (nonatomic, assign, readonly) double voteAverage;
 @property (nonatomic, assign, readonly) NSInteger voteCount;
+
+
+@property (nonatomic, copy, readonly) NSString *imdbID;
 @end

@@ -25,4 +25,12 @@
 }
 
 
++ (TMDBClient*)testClient
+{
+    NSDictionary *representation = [TMDBTestHelper jsonDictonaryFromClass:TMDBUser.class];
+    TMDBUser *user = [MTLJSONAdapter modelOfClass:TMDBUser.class fromJSONDictionary:representation error:nil];
+    NSString *sessoinID = @"0c046bf1b29cd971babc916f39da337";
+    return [TMDBClient clientWithSessionID:sessoinID user:user];
+}
+
 @end

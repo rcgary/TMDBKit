@@ -7,6 +7,7 @@
 //
 
 #import "TMDBMovie.h"
+#import "TMDBGenre.h"
 
 @implementation TMDBMovie
 + (NSDictionary*)JSONKeyPathsByPropertyKey
@@ -24,6 +25,8 @@
             @"movieTitle": @"title",
             @"popularityRate": @"popularity",
             @"movieDescription": @"overview",
+            @"imdbID": @"imdb_id",
+            
             }];
 }
 
@@ -48,4 +51,8 @@
   }];
 }
 
++ (NSValueTransformer*)genresJSONTransformer
+{
+    return [MTLJSONAdapter arrayTransformerWithModelClass:TMDBGenre.class];
+}
 @end

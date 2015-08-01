@@ -9,9 +9,12 @@
 #import "TMDBClient.h"
 
 #import "TMDBObject.h"
+#import "TMDBGenre.h"
 #import "TMDBMovie.h"
 #import "TMDBUser.h"
+#import "TMDBUserList.h"
 
+#import "TMDBClient+Account.h"
 #import "TMDBClient+Authentication.h"
 
 #import "TMDBPageResponse.h"
@@ -19,3 +22,6 @@
 #import "TMDBImageConfiguration.h"
 #import "TMDBTokenResponse.h"
 #import "TMDBGuestSessionResponse.h"
+#import "TMDBGenreResponse.h"
+
+#import "TMDBPageResponse+Parse.h"

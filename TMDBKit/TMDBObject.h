@@ -10,5 +10,5 @@
 #import <Mantle/Mantle.h>
 
 @interface TMDBObject : MTLModel<MTLJSONSerializing>
-@property (nonatomic, assign, readonly)NSInteger objectID;
+@property (nonatomic, assign, readonly)NSString *objectID;
 @end

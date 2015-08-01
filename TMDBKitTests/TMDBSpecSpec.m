@@ -14,6 +14,7 @@ describe(@"TMDBSpec", ^{
     NSString *apikey = @"2449630792c1f2e7c806b4ab2ee826b5";
     TMDBClient *client = [TMDBClient clientWithAPIKey:apikey];
     __block NSError*error;
+    __block TMDBClient *authClient;
     
     beforeAll(^{
         error = nil;
@@ -22,13 +23,17 @@ describe(@"TMDBSpec", ^{
     
     beforeEach(^{
         
+        RACSignal *signal = [TMDBClient loginWithUsername:@"chaoruan" password:@"rcj9888j8" client:client];
+        authClient = [signal asynchronousFirstOrDefault:nil success:nil error:nil];
     });
     
     it(@"just a test", ^{
-        RACSignal *signal = [TMDBClient loginAsGusestWithClient:client];
-        BOOL result = [signal asynchronouslyWaitUntilCompleted:&error];
-        expect(result).to.beTruthy();
+        RACSignal *signal = [client getUserLists];
+        NSArray *response = [signal asynchronousFirstOrDefault:nil success:nil error:nil];
+        
         expect(error).to.beNil();
+        expect(response).notTo.beNil();
+        expect(response.firstObject).beKindOf(TMDBUserList.class);
     });
     
     afterEach(^{
