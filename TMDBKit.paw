@@ -5,7 +5,7 @@
     <databaseInfo>
         <version>134481920</version>
         <UUID>FE4CEB78-65D5-466E-A6F5-671A31654296</UUID>
-        <nextObjectID>158</nextObjectID>
+        <nextObjectID>165</nextObjectID>
         <metadata>
             <plist version="1.0">
                 <dict>
@@ -301,10 +301,10 @@
     </object>
     <object type="LMREQUESTGROUP" id="z130">
         <attribute name="uuid" type="string">23B4C077-5BE0-4A49-87D3-BF838263F828</attribute>
-        <attribute name="order" type="int64">14</attribute>
+        <attribute name="order" type="int64">5</attribute>
         <attribute name="name" type="string">Authentication</attribute>
         <relationship name="parent" type="0/1" destination="LMREQUESTTREEITEM"></relationship>
-        <relationship name="children" type="0/0" destination="LMREQUESTTREEITEM" idrefs="z122 z119 z127 z113"></relationship>
+        <relationship name="children" type="0/0" destination="LMREQUESTTREEITEM" idrefs="z127 z122 z119 z113"></relationship>
         <relationship name="bodyparameters" type="0/0" destination="LMKEYVALUE"></relationship>
         <relationship name="headers" type="0/0" destination="LMKEYVALUE"></relationship>
         <relationship name="urlparameters" type="0/0" destination="LMKEYVALUE"></relationship>
@@ -612,12 +612,93 @@
     </object>
     <object type="LMREQUESTGROUP" id="z158">
         <attribute name="uuid" type="string">5D7FC6D3-AF4E-4988-9A42-3026E7C35249</attribute>
-        <attribute name="order" type="int64">3</attribute>
+        <attribute name="order" type="int64">4</attribute>
         <attribute name="name" type="string">Account</attribute>
         <relationship name="parent" type="0/1" destination="LMREQUESTTREEITEM"></relationship>
-        <relationship name="children" type="0/0" destination="LMREQUESTTREEITEM" idrefs="z146 z151 z133 z142 z141 z149 z129 z154 z156 z152 z138"></relationship>
+        <relationship name="children" type="0/0" destination="LMREQUESTTREEITEM" idrefs="z151 z156 z152 z138 z129 z149 z142 z133 z146 z154 z141"></relationship>
         <relationship name="bodyparameters" type="0/0" destination="LMKEYVALUE"></relationship>
         <relationship name="headers" type="0/0" destination="LMKEYVALUE"></relationship>
         <relationship name="urlparameters" type="0/0" destination="LMKEYVALUE"></relationship>
+    </object>
+    <object type="LMKEYVALUE" id="z159">
+        <attribute name="value" type="string"></attribute>
+        <attribute name="order" type="int64">0</attribute>
+        <attribute name="name" type="string"></attribute>
+        <attribute name="enabled" type="bool">1</attribute>
+        <relationship name="groupforbodyparameters" type="0/1" destination="LMREQUESTGROUP"></relationship>
+        <relationship name="groupforheaders" type="0/1" destination="LMREQUESTGROUP"></relationship>
+        <relationship name="groupforurlparameters" type="0/1" destination="LMREQUESTGROUP"></relationship>
+        <relationship name="request" type="0/1" destination="LMREQUEST" idrefs="z160"></relationship>
+    </object>
+    <object type="LMREQUEST" id="z160">
+        <attribute name="uuid" type="string">33AA92DC-29CF-4159-9A43-28EB474085AA</attribute>
+        <attribute name="url" type="string">[{"data":{"environmentVariable":"5B98547F-FD3A-45D3-9BA2-8BE80991C07A"},"identifier":"com.luckymarmot.EnvironmentVariableDynamicValue"},"\\/movie\\/latest?api_key=",{"data":{"environmentVariable":"DBCC4A82-6EBC-4AC0-A30E-4DAE722CC164"},"identifier":"com.luckymarmot.EnvironmentVariableDynamicValue"}]</attribute>
+        <attribute name="storecookies" type="bool">1</attribute>
+        <attribute name="sendcookies" type="bool">1</attribute>
+        <attribute name="redirectmethod" type="bool">0</attribute>
+        <attribute name="redirectauthorization" type="bool">0</attribute>
+        <attribute name="method" type="string">GET</attribute>
+        <attribute name="followredirects" type="bool">0</attribute>
+        <attribute name="order" type="int64">1</attribute>
+        <attribute name="name" type="string">/movie/latest</attribute>
+        <relationship name="parent" type="0/1" destination="LMREQUESTTREEITEM" idrefs="z164"></relationship>
+        <relationship name="children" type="0/0" destination="LMREQUESTTREEITEM"></relationship>
+        <relationship name="headers" type="0/0" destination="LMKEYVALUE" idrefs="z159"></relationship>
+    </object>
+    <object type="LMKEYVALUE" id="z161">
+        <attribute name="order" type="int64">0</attribute>
+        <attribute name="enabled" type="bool">1</attribute>
+        <relationship name="groupforbodyparameters" type="0/1" destination="LMREQUESTGROUP"></relationship>
+        <relationship name="groupforheaders" type="0/1" destination="LMREQUESTGROUP"></relationship>
+        <relationship name="groupforurlparameters" type="0/1" destination="LMREQUESTGROUP"></relationship>
+        <relationship name="request" type="0/1" destination="LMREQUEST" idrefs="z162"></relationship>
+    </object>
+    <object type="LMREQUEST" id="z162">
+        <attribute name="uuid" type="string">A8295A29-D8D7-484F-8CF0-601C7D702816</attribute>
+        <attribute name="url" type="string">[{"data":{"environmentVariable":"5B98547F-FD3A-45D3-9BA2-8BE80991C07A"},"identifier":"com.luckymarmot.EnvironmentVariableDynamicValue"},"\\/movie\\/now_playing?api_key=",{"data":{"environmentVariable":"DBCC4A82-6EBC-4AC0-A30E-4DAE722CC164"},"identifier":"com.luckymarmot.EnvironmentVariableDynamicValue"}]</attribute>
+        <attribute name="storecookies" type="bool">1</attribute>
+        <attribute name="sendcookies" type="bool">1</attribute>
+        <attribute name="redirectmethod" type="bool">0</attribute>
+        <attribute name="redirectauthorization" type="bool">0</attribute>
+        <attribute name="method" type="string">GET</attribute>
+        <attribute name="followredirects" type="bool">0</attribute>
+        <attribute name="order" type="int64">0</attribute>
+        <attribute name="name" type="string">/movie/now_playing</attribute>
+        <relationship name="parent" type="0/1" destination="LMREQUESTTREEITEM" idrefs="z164"></relationship>
+        <relationship name="children" type="0/0" destination="LMREQUESTTREEITEM"></relationship>
+        <relationship name="headers" type="0/0" destination="LMKEYVALUE" idrefs="z161"></relationship>
+    </object>
+    <object type="LMKEYVALUE" id="z163">
+        <attribute name="order" type="int64">0</attribute>
+        <attribute name="enabled" type="bool">1</attribute>
+        <relationship name="groupforbodyparameters" type="0/1" destination="LMREQUESTGROUP"></relationship>
+        <relationship name="groupforheaders" type="0/1" destination="LMREQUESTGROUP"></relationship>
+        <relationship name="groupforurlparameters" type="0/1" destination="LMREQUESTGROUP"></relationship>
+        <relationship name="request" type="0/1" destination="LMREQUEST" idrefs="z165"></relationship>
+    </object>
+    <object type="LMREQUESTGROUP" id="z164">
+        <attribute name="uuid" type="string">A014B169-2EBC-4488-BD32-88B13CA1A45E</attribute>
+        <attribute name="order" type="int64">3</attribute>
+        <attribute name="name" type="string">Movie</attribute>
+        <relationship name="parent" type="0/1" destination="LMREQUESTTREEITEM"></relationship>
+        <relationship name="children" type="0/0" destination="LMREQUESTTREEITEM" idrefs="z162 z160"></relationship>
+        <relationship name="bodyparameters" type="0/0" destination="LMKEYVALUE"></relationship>
+        <relationship name="headers" type="0/0" destination="LMKEYVALUE"></relationship>
+        <relationship name="urlparameters" type="0/0" destination="LMKEYVALUE"></relationship>
+    </object>
+    <object type="LMREQUEST" id="z165">
+        <attribute name="uuid" type="string">E4E227D1-92F5-4129-B9DA-DAF397055431</attribute>
+        <attribute name="url" type="string">[{"data":{"environmentVariable":"5B98547F-FD3A-45D3-9BA2-8BE80991C07A"},"identifier":"com.luckymarmot.EnvironmentVariableDynamicValue"},"\\/person\\/1?api_key=",{"data":{"environmentVariable":"DBCC4A82-6EBC-4AC0-A30E-4DAE722CC164"},"identifier":"com.luckymarmot.EnvironmentVariableDynamicValue"}]</attribute>
+        <attribute name="storecookies" type="bool">1</attribute>
+        <attribute name="sendcookies" type="bool">1</attribute>
+        <attribute name="redirectmethod" type="bool">0</attribute>
+        <attribute name="redirectauthorization" type="bool">0</attribute>
+        <attribute name="method" type="string">GET</attribute>
+        <attribute name="followredirects" type="bool">0</attribute>
+        <attribute name="order" type="int64">2</attribute>
+        <attribute name="name" type="string">/movie/latest Duplicate</attribute>
+        <relationship name="parent" type="0/1" destination="LMREQUESTTREEITEM"></relationship>
+        <relationship name="children" type="0/0" destination="LMREQUESTTREEITEM"></relationship>
+        <relationship name="headers" type="0/0" destination="LMKEYVALUE" idrefs="z163"></relationship>
     </object>
 </database>
