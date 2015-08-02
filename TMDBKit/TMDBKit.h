@@ -17,6 +17,11 @@
 
 #import "TMDBClient+Account.h"
 #import "TMDBClient+Authentication.h"
+#import "TMDBClient+Movie.h"
+#import "TMDBClient+Genres.h"
+#import "TMDBClient+Discover.h"
+#import "TMDBClient+Person.h"
+#import "TMDBClient+Search.h"
 
 #import "TMDBPageResponse.h"
 #import "TMDBConfigurationResponse.h"
