@@ -10,6 +10,10 @@
 #import "TMDBImage.h"
 
 @implementation TMDBImageResponse
++ (NSDictionary *)JSONKeyPathsByPropertyKey
+{
+    return @{};
+}
 
 + (NSValueTransformer*)backdropsJSONTransformer
 {
