@@ -18,7 +18,7 @@
     return [self enqueueRequest:request resultClass:TMDBPerson.class fetchAllPages:NO];
 }
 
-- (RACSignal*)popularMovies
+- (RACSignal*)popularPerson
 {
     NSURLRequest *request = [self requestWithMethod:@"GET" path:@"person/popular" parameters:nil pageing:YES];
     return [[self enqueueRequest:request resultClass:TMDBPageResponse.class fetchAllPages:YES]

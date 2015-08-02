@@ -10,6 +10,6 @@
 
 @interface TMDBClient (Person)
 - (RACSignal*)personFromID:(NSString*)personID;
-- (RACSignal*)popularMovies;
+- (RACSignal*)popularPerson;
 - (RACSignal*)latestPerson;
 @end
