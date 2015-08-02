@@ -9,14 +9,27 @@
 #import "TMDBClient+Movie.h"
 #import "TMDBMovie.h"
 #import "TMDBPageResponse+Parse.h"
+#import "TMDBImageResponse.h"
 @implementation TMDBClient (Movie)
 
 - (RACSignal*)movieWithID:(NSString*)ID
 {
     NSString *path = [NSString stringWithFormat:@"movie/%@",ID];
+    NSString *imagePath = [NSString stringWithFormat:@"movie/%@/images",ID];
     NSURLRequest *request = [self requestWithMethod:@"GET" path:path parameters:nil pageing:NO];
-    return [self enqueueRequest:request resultClass:TMDBMovie.class fetchAllPages:NO];
+    NSURLRequest *imageRequest = [self requestWithMethod:@"GET" path:imagePath parameters:nil pageing:NO];
+    
+    RACSignal *movieSignal = [self enqueueRequest:request resultClass:TMDBMovie.class fetchAllPages:NO];
+    RACSignal *imageSignal = [self enqueueRequest:imageRequest resultClass:TMDBImageResponse.class fetchAllPages:NO];
+    
+    return [[movieSignal combineLatestWith:imageSignal] map:^id(RACTuple *tuple) {
+        TMDBMovie *movie = tuple.first;
+        TMDBImageResponse *imageResponse = tuple.second;
+        [movie updateWithImageResponse:imageResponse];
+        return movie;
+    }];
 }
+
 
 - (RACSignal*)similarMoviesFromMovieID:(NSString*)ID
 {

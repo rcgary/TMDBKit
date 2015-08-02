@@ -8,6 +8,8 @@
 
 #import "TMDBObject.h"
 
+@class TMDBImageResponse;
+
 @interface TMDBMovie : TMDBObject
 @property (nonatomic, assign, readonly) BOOL adult;
 @property (nonatomic, copy, readonly) NSString *backdropPath;
@@ -24,7 +26,10 @@
 @property (nonatomic, assign, readonly) BOOL video;
 @property (nonatomic, assign, readonly) double voteAverage;
 @property (nonatomic, assign, readonly) NSInteger voteCount;
-
-
 @property (nonatomic, copy, readonly) NSString *imdbID;
+
+@property (nonatomic, copy, readonly) NSArray *posters;
+@property (nonatomic, copy, readonly) NSArray *backdrops;
+
+- (void)updateWithImageResponse:(TMDBImageResponse*)response;
 @end
