@@ -13,14 +13,14 @@
 
 - (RACSignal*)movieWithID:(NSString*)ID
 {
-    NSString *path = [NSString stringWithFormat:@"/movie/%@",ID];
+    NSString *path = [NSString stringWithFormat:@"movie/%@",ID];
     NSURLRequest *request = [self requestWithMethod:@"GET" path:path parameters:nil pageing:NO];
     return [self enqueueRequest:request resultClass:TMDBMovie.class fetchAllPages:NO];
 }
 
 - (RACSignal*)similarMoviesFromMovieID:(NSString*)ID
 {
-    NSString *path = [NSString stringWithFormat:@"/movie/%@/similar",ID];
+    NSString *path = [NSString stringWithFormat:@"movie/%@/similar",ID];
     NSURLRequest *request = [self requestWithMethod:@"GET" path:path parameters:nil pageing:YES];
     return [[self enqueueRequest:request resultClass:TMDBPageResponse.class fetchAllPages:YES]
             flattenMap:^RACStream *(TMDBPageResponse *response) {

@@ -12,6 +12,7 @@
 #import "TMDBGenre.h"
 #import "TMDBMovie.h"
 #import "TMDBUser.h"
+#import "TMDBPerson.h"
 #import "TMDBUserList.h"
 
 #import "TMDBClient+Account.h"
