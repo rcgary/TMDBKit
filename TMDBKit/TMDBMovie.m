@@ -11,6 +11,7 @@
 #import "TMDBImage.h"
 #import "TMDBImageResponse.h"
 #import "TMDBConstant.h"
+#import <ReactiveCocoa/ReactiveCocoa.h>
 
 @interface TMDBMovie ()
 @property (nonatomic, copy) NSArray *posters;
