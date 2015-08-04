@@ -8,4 +8,4 @@
 
 #import <Foundation/Foundation.h>
 
-NSString * const imageBaseURL = @"http://image.tmdb.org/t/p/";
+NSString * const tmdb_imageBaseURLDomain = @"http://image.tmdb.org/t/p/";

@@ -68,12 +68,12 @@
 - (void)updateWithImageResponse:(TMDBImageResponse*)response
 {
     self.backdrops = [[response.backdrops.rac_sequence map:^id(TMDBImage *image) {
-        NSString *url = [NSString stringWithFormat:@"%@%@",imageBaseURL,image.filePath];
+        NSString *url = [NSString stringWithFormat:@"%@%@",tmdb_imageBaseURLDomain,image.filePath];
         return [NSURL URLWithString:url];
     }]array];
     
     self.posters = [[response.posters.rac_sequence map:^id(TMDBImage *image) {
-        NSString *url = [NSString stringWithFormat:@"%@%@",imageBaseURL,image.filePath];
+        NSString *url = [NSString stringWithFormat:@"%@%@",tmdb_imageBaseURLDomain,image.filePath];
         return [NSURL URLWithString:url];
     }]array];
 }

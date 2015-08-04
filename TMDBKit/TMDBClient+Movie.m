@@ -34,8 +34,8 @@
 - (RACSignal*)similarMoviesFromMovieID:(NSString*)ID
 {
     NSString *path = [NSString stringWithFormat:@"movie/%@/similar",ID];
-    NSURLRequest *request = [self requestWithMethod:@"GET" path:path parameters:nil pageing:YES];
-    return [[self enqueueRequest:request resultClass:TMDBPageResponse.class fetchAllPages:YES]
+    NSURLRequest *request = [self requestWithMethod:@"GET" path:path parameters:nil pageing:NO];
+    return [[self enqueueRequest:request resultClass:TMDBPageResponse.class fetchAllPages:NO]
             flattenMap:^RACStream *(TMDBPageResponse *response) {
                 return [response parseResultWithClass:TMDBMovie.class];
             }];
@@ -49,8 +49,8 @@
 
 - (RACSignal*)nowPlayingMovies
 {
-    NSURLRequest *request = [self requestWithMethod:@"GET" path:@"movie/now_playing" parameters:nil pageing:YES];
-    return [[self enqueueRequest:request resultClass:TMDBPageResponse.class fetchAllPages:YES]
+    NSURLRequest *request = [self requestWithMethod:@"GET" path:@"movie/now_playing" parameters:nil pageing:NO];
+    return [[self enqueueRequest:request resultClass:TMDBPageResponse.class fetchAllPages:NO]
             flattenMap:^RACStream *(TMDBPageResponse *response) {
                 return [response parseResultWithClass:TMDBMovie.class];
             }];
@@ -58,8 +58,8 @@
 
 - (RACSignal*)popularMovies
 {
-    NSURLRequest *request = [self requestWithMethod:@"GET" path:@"movie/popular" parameters:nil pageing:YES];
-    return [[self enqueueRequest:request resultClass:TMDBPageResponse.class fetchAllPages:YES]
+    NSURLRequest *request = [self requestWithMethod:@"GET" path:@"movie/popular" parameters:nil pageing:NO];
+    return [[self enqueueRequest:request resultClass:TMDBPageResponse.class fetchAllPages:NO]
             flattenMap:^RACStream *(TMDBPageResponse *response) {
                 return [response parseResultWithClass:TMDBMovie.class];
             }];
@@ -67,8 +67,8 @@
 
 - (RACSignal*)topRatedMovies
 {
-    NSURLRequest *request = [self requestWithMethod:@"GET" path:@"movie/top_rated" parameters:nil pageing:YES];
-    return [[self enqueueRequest:request resultClass:TMDBPageResponse.class fetchAllPages:YES]
+    NSURLRequest *request = [self requestWithMethod:@"GET" path:@"movie/top_rated" parameters:nil pageing:NO];
+    return [[self enqueueRequest:request resultClass:TMDBPageResponse.class fetchAllPages:NO]
             flattenMap:^RACStream *(TMDBPageResponse *response) {
                 return [response parseResultWithClass:TMDBMovie.class];
             }];
@@ -76,8 +76,8 @@
 
 - (RACSignal*)upcomingMovies
 {
-    NSURLRequest *request = [self requestWithMethod:@"GET" path:@"movie/upcoming" parameters:nil pageing:YES];
-    return [[self enqueueRequest:request resultClass:TMDBPageResponse.class fetchAllPages:YES]
+    NSURLRequest *request = [self requestWithMethod:@"GET" path:@"movie/upcoming" parameters:nil pageing:NO];
+    return [[self enqueueRequest:request resultClass:TMDBPageResponse.class fetchAllPages:NO]
             flattenMap:^RACStream *(TMDBPageResponse *response) {
                 return [response parseResultWithClass:TMDBMovie.class];
             }];
