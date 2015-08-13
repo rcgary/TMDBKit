@@ -14,14 +14,14 @@
 - (RACSignal*)personFromID:(NSString*)personID
 {
     NSString *path = [NSString stringWithFormat:@"person/%@",personID];
-    NSURLRequest *request = [self requestWithMethod:@"GET" path:path parameters:nil pageing:NO];
-    return [self enqueueRequest:request resultClass:TMDBPerson.class fetchAllPages:NO];
+    NSURLRequest *request = [self requestWithMethod:@"GET" path:path parameters:nil];
+    return [self enqueueRequest:request resultClass:TMDBPerson.class ];
 }
 
 - (RACSignal*)popularPerson
 {
-    NSURLRequest *request = [self requestWithMethod:@"GET" path:@"person/popular" parameters:nil pageing:YES];
-    return [[self enqueueRequest:request resultClass:TMDBPageResponse.class fetchAllPages:YES]
+    NSURLRequest *request = [self requestWithMethod:@"GET" path:@"person/popular" parameters:nil];
+    return [[self enqueueRequest:request resultClass:TMDBPageResponse.class ]
             flattenMap:^RACStream *(TMDBPageResponse *response) {
                 return [response parseResultWithClass:TMDBPerson.class];
             }];
@@ -29,8 +29,8 @@
 
 - (RACSignal*)latestPerson
 {
-    NSURLRequest *request = [self requestWithMethod:@"GET" path:@"person/latest" parameters:nil pageing:NO];
-    return [self enqueueRequest:request resultClass:TMDBPerson.class fetchAllPages:NO];
+    NSURLRequest *request = [self requestWithMethod:@"GET" path:@"person/latest" parameters:nil];
+    return [self enqueueRequest:request resultClass:TMDBPerson.class ];
 }
 
 @end

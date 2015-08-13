@@ -15,8 +15,8 @@
 @implementation TMDBClient (Genres)
 - (RACSignal*)allMovieGenre
 {
-    NSURLRequest *request = [self requestWithMethod:@"GET" path:@"genre/movie/list" parameters:nil pageing:YES];
-    return [[self enqueueRequest:request resultClass:TMDBGenreResponse.class fetchAllPages:YES]
+    NSURLRequest *request = [self requestWithMethod:@"GET" path:@"genre/movie/list" parameters:nil];
+    return [[self enqueueRequest:request resultClass:TMDBGenreResponse.class ]
             map:^id(TMDBGenreResponse *response) {
                 return response.genres;
             }];
@@ -25,8 +25,8 @@
 - (RACSignal*)moviesFromGenre:(TMDBGenre*)genre
 {
     NSString *path = [NSString stringWithFormat:@"genre/%@/movie",genre.objectID];
-    NSURLRequest *request = [self requestWithMethod:@"GET" path:path parameters:nil pageing:YES];
-    return [[self enqueueRequest:request resultClass:TMDBPageResponse.class fetchAllPages:YES]
+    NSURLRequest *request = [self requestWithMethod:@"GET" path:path parameters:nil];
+    return [[self enqueueRequest:request resultClass:TMDBPageResponse.class ]
             flattenMap:^RACStream *(TMDBPageResponse *response) {
                 return [response parseResultWithClass:TMDBMovie.class];
             }];

@@ -14,8 +14,8 @@
 
 - (RACSignal*)discoverMovies
 {
-    NSURLRequest *request = [self requestWithMethod:@"GET" path:@"discover/movie" parameters:nil pageing:YES];
-    return [[self enqueueRequest:request resultClass:TMDBPageResponse.class fetchAllPages:YES]
+    NSURLRequest *request = [self requestWithMethod:@"GET" path:@"discover/movie" parameters:nil ];
+    return [[self enqueueRequest:request resultClass:TMDBPageResponse.class ]
             flattenMap:^RACStream *(TMDBPageResponse *response) {
                 return [response parseResultWithClass:TMDBMovie.class];
             }];
@@ -23,8 +23,8 @@
 
 - (RACSignal*)discoverMoviesWithParameters:(NSDictionary*)parameters
 {
-    NSURLRequest *request = [self requestWithMethod:@"GET" path:@"discover/movie" parameters:parameters pageing:YES];
-    return [[self enqueueRequest:request resultClass:TMDBPageResponse.class fetchAllPages:YES]
+    NSURLRequest *request = [self requestWithMethod:@"GET" path:@"discover/movie" parameters:parameters];
+    return [[self enqueueRequest:request resultClass:TMDBPageResponse.class ]
             flattenMap:^RACStream *(TMDBPageResponse *response) {
                 return [response parseResultWithClass:TMDBMovie.class];
             }];

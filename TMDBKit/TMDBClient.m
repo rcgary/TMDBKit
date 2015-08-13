@@ -215,13 +215,19 @@ static NSString *dominURLString = @"http://api.themoviedb.org/3";
     }];
 }
 
-- (NSMutableURLRequest *)requestWithMethod:(NSString *)method path:(NSString *)path parameters:(NSDictionary *)parameters pageing:(BOOL)pageing {
+- (NSMutableURLRequest *)requestWithMethod:(NSString *)method path:(NSString *)path parameters:(NSDictionary *)parameters
+{
+    return [self requestWithMethod:method path:path parameters:parameters page:nil];
+}
+
+- (NSMutableURLRequest *)requestWithMethod:(NSString *)method path:(NSString *)path parameters:(NSDictionary *)parameters page:(NSNumber*)page
+{
     NSParameterAssert(method != nil);
     
     parameters = [parameters ?: [NSDictionary dictionary] mtl_dictionaryByAddingEntriesFromDictionary:@{ @"api_key": self.apiKey}];
-    if (pageing) {
+    if (page) {
         // If it's pageing, will pass the pageing parameter, start on first page
-        parameters = [parameters mtl_dictionaryByAddingEntriesFromDictionary:@{@"page": @1}];
+        parameters = [parameters mtl_dictionaryByAddingEntriesFromDictionary:@{@"page": page}];
     }
     
     if (self.isAuthenticated) {
@@ -237,7 +243,7 @@ static NSString *dominURLString = @"http://api.themoviedb.org/3";
 
 #pragma mark Request Enqueuing
 
-- (RACSignal *)enqueueRequest:(NSURLRequest *)request fetchAllPages:(BOOL)fetchAllPages
+- (RACSignal *)enqueueRequest:(NSURLRequest *)request
 {
     RACSignal *signal = [RACSignal createSignal:^(id<RACSubscriber> subscriber) {
         AFHTTPRequestOperation *operation = [self HTTPRequestOperationWithRequest:request success:^(AFHTTPRequestOperation *operation, id responseObject) {
@@ -247,16 +253,7 @@ static NSString *dominURLString = @"http://api.themoviedb.org/3";
                 return;
             }
             
-            RACSignal *nextPageSignal = [RACSignal empty];
-            NSMutableURLRequest *nextRequest = (fetchAllPages ? [self nextPageURLFromOperation:operation] : nil);
-            if (nextRequest != nil) {
-                nextPageSignal = [self enqueueRequest:nextRequest fetchAllPages:YES];
-            }
-            
-            [[[RACSignal
-               return:responseObject]
-              concat:nextPageSignal]
-             subscribe:subscriber];
+            [[RACSignal return:responseObject] subscribe:subscriber];
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
             [subscriber sendError:error];
         }];
@@ -268,23 +265,14 @@ static NSString *dominURLString = @"http://api.themoviedb.org/3";
         }];
     }];
     
-    return [[signal
-             replayLazily]
-            setNameWithFormat:@"-enqueueRequest: %@ fetchAllPages: %i", request, (int)fetchAllPages];
-}
-
-- (RACSignal *)enqueueRequest:(NSURLRequest *)request resultClass:(Class)resultClass fetchAllPages:(BOOL)fetchAllPages
-{
-    return [[self
-             enqueueRequest:request fetchAllPages:fetchAllPages]
-            flattenMap:^RACStream *(id responseObject) {
-                return [self parsedResponseOfClass:resultClass fromJSON:responseObject];
-            }];
+    return [[signal replayLazily] setNameWithFormat:@"-enqueueRequest: %@ ", request];
 }
 
 - (RACSignal *)enqueueRequest:(NSURLRequest *)request resultClass:(Class)resultClass
 {
-    return [self enqueueRequest:request resultClass:resultClass fetchAllPages:YES];
+    return [[self enqueueRequest:request] flattenMap:^RACStream *(id responseObject) {
+                return [self parsedResponseOfClass:resultClass fromJSON:responseObject];
+            }];
 }
 
 - (NSMutableURLRequest *)nextPageURLFromOperation:(AFHTTPRequestOperation *)operation

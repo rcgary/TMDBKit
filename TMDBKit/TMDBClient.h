@@ -29,9 +29,11 @@
 - (RACSignal *)POST:(NSString *)URLString parameters:(id)parameters resultClass:(Class)resultClass;
 - (RACSignal *)DELETE:(NSString *)URLString parameters:(id)parameters resultClass:(Class)resultClass;
 
-- (NSMutableURLRequest *)requestWithMethod:(NSString *)method path:(NSString *)path parameters:(NSDictionary *)parameters pageing:(BOOL)pageing;
-- (RACSignal *)enqueueRequest:(NSURLRequest *)request fetchAllPages:(BOOL)fetchAllPages;
-- (RACSignal *)enqueueRequest:(NSURLRequest *)request resultClass:(Class)resultClass fetchAllPages:(BOOL)fetchAllPages;
+- (NSMutableURLRequest *)requestWithMethod:(NSString *)method path:(NSString *)path parameters:(NSDictionary *)parameters;
+- (NSMutableURLRequest *)requestWithMethod:(NSString *)method path:(NSString *)path parameters:(NSDictionary *)parameters page:(NSNumber*)page;
+
+- (RACSignal *)enqueueRequest:(NSURLRequest *)request;
+- (RACSignal *)enqueueRequest:(NSURLRequest *)request resultClass:(Class)resultClass;
 
 
 - (void)updateGuestSessionID:(NSString*)sessionID;

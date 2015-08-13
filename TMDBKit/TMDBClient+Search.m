@@ -18,8 +18,8 @@
 {
     path = [NSString stringWithFormat:@"search/%@",path];
     NSDictionary *parameters = NSDictionaryOfVariableBindings(query);
-    NSURLRequest *request = [self requestWithMethod:@"GET" path:path parameters:parameters pageing:YES];
-    return [[self enqueueRequest:request resultClass:TMDBPageResponse.class fetchAllPages:YES]
+    NSURLRequest *request = [self requestWithMethod:@"GET" path:path parameters:parameters];
+    return [[self enqueueRequest:request resultClass:TMDBPageResponse.class ]
             flattenMap:^RACStream *(TMDBPageResponse *response) {
                 return [response parseResultWithClass:resultClass];
             }];

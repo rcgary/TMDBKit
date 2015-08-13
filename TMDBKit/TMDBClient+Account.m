@@ -16,15 +16,15 @@
 
 - (RACSignal*)userAccount
 {
-    NSURLRequest *request = [self requestWithMethod:@"GET" path:@"account" parameters:nil pageing:NO];
-    return [self enqueueRequest:request resultClass:TMDBUser.class fetchAllPages:NO];
+    NSURLRequest *request = [self requestWithMethod:@"GET" path:@"account" parameters:nil];
+    return [self enqueueRequest:request resultClass:TMDBUser.class];
 }
 
 - (RACSignal*)getUserLists
 {
     NSString *path = [NSString stringWithFormat:@"account/%@/lists",self.user.objectID];
-    NSURLRequest *request = [self requestWithMethod:@"GET" path:path parameters:nil pageing:YES];
-    return [[self enqueueRequest:request resultClass:TMDBPageResponse.class fetchAllPages:YES]
+    NSURLRequest *request = [self requestWithMethod:@"GET" path:path parameters:nil];
+    return [[self enqueueRequest:request resultClass:TMDBPageResponse.class ]
             flattenMap:^RACStream *(TMDBPageResponse *response) {
                 return [response parseResultWithClass:TMDBUserList.class];
             }];
@@ -33,8 +33,8 @@
 - (RACSignal*)getFavoriteMovies
 {
     NSString *path = [NSString stringWithFormat:@"account/%@/favorite/movies",self.user.objectID];
-    NSURLRequest *request = [self requestWithMethod:@"GET" path:path parameters:nil pageing:YES];
-    return [[self enqueueRequest:request resultClass:TMDBPageResponse.class fetchAllPages:YES]
+    NSURLRequest *request = [self requestWithMethod:@"GET" path:path parameters:nil];
+    return [[self enqueueRequest:request resultClass:TMDBPageResponse.class ]
             flattenMap:^RACStream *(TMDBPageResponse *response) {
                 return [response parseResultWithClass:TMDBMovie.class];
             }];
@@ -43,8 +43,8 @@
 - (RACSignal*)getRatedMovies
 {
     NSString *path = [NSString stringWithFormat:@"account/%@/rated/movies",self.user.objectID];
-    NSURLRequest *request = [self requestWithMethod:@"GET" path:path parameters:nil pageing:YES];
-    return [[self enqueueRequest:request resultClass:TMDBPageResponse.class fetchAllPages:YES]
+    NSURLRequest *request = [self requestWithMethod:@"GET" path:path parameters:nil];
+    return [[self enqueueRequest:request resultClass:TMDBPageResponse.class ]
             flattenMap:^RACStream *(TMDBPageResponse *response) {
                 return [response parseResultWithClass:TMDBMovie.class];
             }];
@@ -53,8 +53,8 @@
 - (RACSignal*)getWatchlistMovies
 {
     NSString *path = [NSString stringWithFormat:@"account/%@/watchlist/movies",self.user.objectID];
-    NSURLRequest *request = [self requestWithMethod:@"GET" path:path parameters:nil pageing:YES];
-    return [[self enqueueRequest:request resultClass:TMDBPageResponse.class fetchAllPages:YES]
+    NSURLRequest *request = [self requestWithMethod:@"GET" path:path parameters:nil];
+    return [[self enqueueRequest:request resultClass:TMDBPageResponse.class ]
             flattenMap:^RACStream *(TMDBPageResponse *response) {
                 return [response parseResultWithClass:TMDBMovie.class];
             }];
