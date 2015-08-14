@@ -11,16 +11,27 @@
 @implementation TMDBPageResponse (Parse)
 - (RACSignal*)parseResultWithClass:(Class)class
 {
+    return [self parseResultWithClass:class paged:NO];
+}
+
+- (RACSignal*)parseResultWithClass:(Class)class paged:(BOOL)paged
+{
     return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
         NSError *error;
         NSArray *array = [MTLJSONAdapter modelsOfClass:class fromJSONArray:self.objects error:&error];
         if (error) {
             [subscriber sendError:error];
         } else {
-            [subscriber sendNext:array];
+            if (paged) {
+                [subscriber sendNext:RACTuplePack(array, @(self.totalPages))];
+            } else  {
+                [subscriber sendNext:array];
+            }
+            
             [subscriber sendCompleted];
         }
         return nil;
     }];
 }
+
 @end

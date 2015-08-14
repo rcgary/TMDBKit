@@ -10,4 +10,5 @@
 
 @interface TMDBPageResponse (Parse)
 - (RACSignal*)parseResultWithClass:(Class)class;
+- (RACSignal*)parseResultWithClass:(Class)class paged:(BOOL)paged;
 @end

@@ -10,6 +10,12 @@
 #import "TMDBMovie.h"
 #import "TMDBPageResponse+Parse.h"
 #import "TMDBImageResponse.h"
+
+NSString * const tmdb_nowPlayingMovies = @"now_playing";
+NSString * const tmdb_popularMovies = @"popular";
+NSString * const tmdb_topRatedMovies = @"top_rated";
+NSString * const tmdb_upcomingMovies = @"upcoming";
+
 @implementation TMDBClient (Movie)
 
 - (RACSignal*)movieWithID:(NSString*)ID
@@ -30,6 +36,15 @@
     }];
 }
 
+- (RACSignal*)fetchmoviesWithPath:(NSString*)path atPage:(NSNumber*)page
+{
+    path = [NSString stringWithFormat:@"movie/%@",path];
+    NSURLRequest *request = [self requestWithMethod:@"GET" path:path parameters:nil page:page];
+    return [[self enqueueRequest:request resultClass:TMDBPageResponse.class ]
+            flattenMap:^RACStream *(TMDBPageResponse *response) {
+                return [response parseResultWithClass:TMDBMovie.class paged:YES];
+            }];
+}
 
 - (RACSignal*)similarMoviesFromMovieID:(NSString*)ID
 {
