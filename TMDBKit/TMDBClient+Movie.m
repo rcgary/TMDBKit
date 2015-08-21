@@ -10,6 +10,8 @@
 #import "TMDBMovie.h"
 #import "TMDBPageResponse+Parse.h"
 #import "TMDBImageResponse.h"
+#import "TMDBVideoResponse.h"
+#import "TMDBCreditsResponse.h"
 
 NSString * const tmdb_nowPlayingMovies = @"now_playing";
 NSString * const tmdb_popularMovies = @"popular";
@@ -22,16 +24,28 @@ NSString * const tmdb_upcomingMovies = @"upcoming";
 {
     NSString *path = [NSString stringWithFormat:@"movie/%@",ID];
     NSString *imagePath = [NSString stringWithFormat:@"movie/%@/images",ID];
+    NSString *videoPath = [NSString stringWithFormat:@"movie/%@/videos",ID];
+    NSString *creditPath = [NSString stringWithFormat:@"movie/%@/credits",ID];
+    
     NSURLRequest *request = [self requestWithMethod:@"GET" path:path parameters:nil];
     NSURLRequest *imageRequest = [self requestWithMethod:@"GET" path:imagePath parameters:nil];
+    NSURLRequest *videoRequest = [self requestWithMethod:@"GET" path:videoPath parameters:nil];
+    NSURLRequest *creditRequest = [self requestWithMethod:@"GET" path:creditPath parameters:nil];
     
     RACSignal *movieSignal = [self enqueueRequest:request resultClass:TMDBMovie.class ];
     RACSignal *imageSignal = [self enqueueRequest:imageRequest resultClass:TMDBImageResponse.class ];
+    RACSignal *videosSignal = [self enqueueRequest:videoRequest resultClass:TMDBVideoResponse.class ];
+    RACSignal *creditSignal = [self enqueueRequest:creditRequest resultClass:TMDBCreditsResponse.class ];
     
-    return [[movieSignal combineLatestWith:imageSignal] map:^id(RACTuple *tuple) {
+    return [[RACSignal combineLatest:@[movieSignal,imageSignal,videosSignal,creditSignal]] map:^id(RACTuple *tuple) {
         TMDBMovie *movie = tuple.first;
         TMDBImageResponse *imageResponse = tuple.second;
+        TMDBVideoResponse *videoResponse = tuple.third;
+        TMDBCreditsResponse *creditResponse = tuple.fifth;
+        
         [movie updateWithImageResponse:imageResponse];
+        [movie updateWithVideoResponse:videoResponse];
+        [movie updateWithCreditResponse:creditResponse];
         return movie;
     }];
 }

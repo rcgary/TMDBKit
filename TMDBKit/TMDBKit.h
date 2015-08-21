@@ -14,6 +14,9 @@
 #import "TMDBUser.h"
 #import "TMDBPerson.h"
 #import "TMDBUserList.h"
+#import "TMDBVideo.h"
+#import "TMDBCrew.h"
+#import "TMDBCast.h"
 
 #import "TMDBClient+Account.h"
 #import "TMDBClient+Authentication.h"
@@ -29,5 +32,6 @@
 #import "TMDBTokenResponse.h"
 #import "TMDBGuestSessionResponse.h"
 #import "TMDBGenreResponse.h"
+#import "TMDBCreditsResponse.h"
 
 #import "TMDBPageResponse+Parse.h"

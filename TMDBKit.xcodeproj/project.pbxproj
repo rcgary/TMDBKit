@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		1A3832DE48A3489AD51A9D78 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 69E56F22569205D6DE98B981 /* libPods.a */; };
+		68117AE01B83575600AA1BEE /* TMDBVideo.m in Sources */ = {isa = PBXBuildFile; fileRef = 68117ADF1B83575600AA1BEE /* TMDBVideo.m */; };
+		68117AE31B83589500AA1BEE /* TMDBVideoResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 68117AE21B83589500AA1BEE /* TMDBVideoResponse.m */; };
+		68117AF21B87417300AA1BEE /* TMDBCreditsResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 68117AF11B87417300AA1BEE /* TMDBCreditsResponse.m */; };
+		68117AF51B87422400AA1BEE /* TMDBCast.m in Sources */ = {isa = PBXBuildFile; fileRef = 68117AF41B87422400AA1BEE /* TMDBCast.m */; };
+		68117AF81B87436000AA1BEE /* TMDBCrew.m in Sources */ = {isa = PBXBuildFile; fileRef = 68117AF71B87436000AA1BEE /* TMDBCrew.m */; };
 		684C04221B6E202F006ECB16 /* TMDBImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 684C04211B6E202F006ECB16 /* TMDBImage.m */; };
 		684C04251B6E2227006ECB16 /* TMDBImageResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 684C04241B6E2227006ECB16 /* TMDBImageResponse.m */; };
 		684C04291B6E28BE006ECB16 /* TMDBConstant.m in Sources */ = {isa = PBXBuildFile; fileRef = 684C04281B6E28BE006ECB16 /* TMDBConstant.m */; };
@@ -75,6 +80,16 @@
 
 /* Begin PBXFileReference section */
 		28540E31B4A9DE2C57E22388 /* Pods-TMDBKitTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TMDBKitTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TMDBKitTests/Pods-TMDBKitTests.release.xcconfig"; sourceTree = "<group>"; };
+		68117ADE1B83575600AA1BEE /* TMDBVideo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMDBVideo.h; sourceTree = "<group>"; };
+		68117ADF1B83575600AA1BEE /* TMDBVideo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMDBVideo.m; sourceTree = "<group>"; };
+		68117AE11B83589500AA1BEE /* TMDBVideoResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMDBVideoResponse.h; sourceTree = "<group>"; };
+		68117AE21B83589500AA1BEE /* TMDBVideoResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMDBVideoResponse.m; sourceTree = "<group>"; };
+		68117AF01B87417300AA1BEE /* TMDBCreditsResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMDBCreditsResponse.h; sourceTree = "<group>"; };
+		68117AF11B87417300AA1BEE /* TMDBCreditsResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMDBCreditsResponse.m; sourceTree = "<group>"; };
+		68117AF31B87422400AA1BEE /* TMDBCast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMDBCast.h; sourceTree = "<group>"; };
+		68117AF41B87422400AA1BEE /* TMDBCast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMDBCast.m; sourceTree = "<group>"; };
+		68117AF61B87436000AA1BEE /* TMDBCrew.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMDBCrew.h; sourceTree = "<group>"; };
+		68117AF71B87436000AA1BEE /* TMDBCrew.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMDBCrew.m; sourceTree = "<group>"; };
 		684C04201B6E202F006ECB16 /* TMDBImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMDBImage.h; sourceTree = "<group>"; };
 		684C04211B6E202F006ECB16 /* TMDBImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMDBImage.m; sourceTree = "<group>"; };
 		684C04231B6E2227006ECB16 /* TMDBImageResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMDBImageResponse.h; sourceTree = "<group>"; };
@@ -195,10 +210,16 @@
 				68D7EDDD1B636931005F9855 /* TMDBMovie.m */,
 				684C04201B6E202F006ECB16 /* TMDBImage.h */,
 				684C04211B6E202F006ECB16 /* TMDBImage.m */,
+				68117ADE1B83575600AA1BEE /* TMDBVideo.h */,
+				68117ADF1B83575600AA1BEE /* TMDBVideo.m */,
 				68B9F8E51B6CD037006758C2 /* TMDBUserList.h */,
 				68B9F8E61B6CD037006758C2 /* TMDBUserList.m */,
 				68B9F8ED1B6CEC47006758C2 /* TMDBGenre.h */,
 				68B9F8EE1B6CEC47006758C2 /* TMDBGenre.m */,
+				68117AF31B87422400AA1BEE /* TMDBCast.h */,
+				68117AF41B87422400AA1BEE /* TMDBCast.m */,
+				68117AF61B87436000AA1BEE /* TMDBCrew.h */,
+				68117AF71B87436000AA1BEE /* TMDBCrew.m */,
 				68B9F8F91B6DBE1C006758C2 /* TMDBPerson.h */,
 				68B9F8FA1B6DBE1C006758C2 /* TMDBPerson.m */,
 			);
@@ -212,6 +233,8 @@
 				68B9F8F41B6CEE5E006758C2 /* TMDBGenreResponse.m */,
 				684C04231B6E2227006ECB16 /* TMDBImageResponse.h */,
 				684C04241B6E2227006ECB16 /* TMDBImageResponse.m */,
+				68117AE11B83589500AA1BEE /* TMDBVideoResponse.h */,
+				68117AE21B83589500AA1BEE /* TMDBVideoResponse.m */,
 				68D7EDD11B626DB0005F9855 /* TMDBConfigurationResponse.h */,
 				68D7EDD21B626DB0005F9855 /* TMDBConfigurationResponse.m */,
 				68D7EDCB1B626AC6005F9855 /* TMDBPageResponse.h */,
@@ -222,6 +245,8 @@
 				68B9F8D21B68E568006758C2 /* TMDBGuestSessionResponse.m */,
 				68B9F8E21B6CCA08006758C2 /* TMDBPageResponse+Parse.h */,
 				68B9F8E31B6CCA08006758C2 /* TMDBPageResponse+Parse.m */,
+				68117AF01B87417300AA1BEE /* TMDBCreditsResponse.h */,
+				68117AF11B87417300AA1BEE /* TMDBCreditsResponse.m */,
 			);
 			name = Response;
 			sourceTree = "<group>";
@@ -483,6 +508,8 @@
 			files = (
 				684C04251B6E2227006ECB16 /* TMDBImageResponse.m in Sources */,
 				68B9F8FB1B6DBE1C006758C2 /* TMDBPerson.m in Sources */,
+				68117AE01B83575600AA1BEE /* TMDBVideo.m in Sources */,
+				68117AF81B87436000AA1BEE /* TMDBCrew.m in Sources */,
 				68D7EDD31B626DB0005F9855 /* TMDBConfigurationResponse.m in Sources */,
 				68D7EDCD1B626AC6005F9855 /* TMDBPageResponse.m in Sources */,
 				68D7EDEC1B63B1C7005F9855 /* TMDBUser.m in Sources */,
@@ -493,14 +520,17 @@
 				68B9F8E41B6CCA08006758C2 /* TMDBPageResponse+Parse.m in Sources */,
 				68B9F8EC1B6CEA40006758C2 /* TMDBClient+Discover.m in Sources */,
 				68D7EDDE1B636931005F9855 /* TMDBMovie.m in Sources */,
+				68117AF21B87417300AA1BEE /* TMDBCreditsResponse.m in Sources */,
 				68B9F8D01B68D8A4006758C2 /* TMDBTokenResponse.m in Sources */,
 				684C04221B6E202F006ECB16 /* TMDBImage.m in Sources */,
 				68D7EDD01B626B6D005F9855 /* TMDBImageConfiguration.m in Sources */,
 				68B9F8F51B6CEE5E006758C2 /* TMDBGenreResponse.m in Sources */,
 				A0BDB6921B576A1F00E70654 /* TMDBClient.m in Sources */,
+				68117AF51B87422400AA1BEE /* TMDBCast.m in Sources */,
 				68B9F8F81B6CF4E9006758C2 /* TMDBClient+Movie.m in Sources */,
 				684C04291B6E28BE006ECB16 /* TMDBConstant.m in Sources */,
 				68B9F8DB1B6CBDA7006758C2 /* TMDBClient+Account.m in Sources */,
+				68117AE31B83589500AA1BEE /* TMDBVideoResponse.m in Sources */,
 				68B9F9011B6DC792006758C2 /* TMDBClient+Search.m in Sources */,
 				68D7EDE11B636A44005F9855 /* TMDBObject.m in Sources */,
 				68B9F8FE1B6DC233006758C2 /* TMDBClient+Person.m in Sources */,

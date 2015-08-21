@@ -9,6 +9,8 @@
 #import "TMDBObject.h"
 
 @class TMDBImageResponse;
+@class TMDBVideoResponse;
+@class TMDBCreditsResponse;
 
 @interface TMDBMovie : TMDBObject
 @property (nonatomic, assign, readonly) BOOL adult;
@@ -27,9 +29,16 @@
 @property (nonatomic, assign, readonly) double voteAverage;
 @property (nonatomic, assign, readonly) NSInteger voteCount;
 @property (nonatomic, copy, readonly) NSString *imdbID;
+@property (nonatomic, assign, readonly) NSInteger runtime;
 
 @property (nonatomic, copy, readonly) NSArray *posters;
 @property (nonatomic, copy, readonly) NSArray *backdrops;
+@property (nonatomic, copy, readonly) NSArray *videoKeys;
+@property (nonatomic, copy, readonly) NSArray *casts;
+@property (nonatomic, copy, readonly) NSArray *crews;
+
 
 - (void)updateWithImageResponse:(TMDBImageResponse*)response;
+- (void)updateWithVideoResponse:(TMDBVideoResponse*)response;
+- (void)updateWithCreditResponse:(TMDBCreditsResponse *)response;
 @end

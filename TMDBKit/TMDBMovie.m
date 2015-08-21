@@ -9,13 +9,19 @@
 #import "TMDBMovie.h"
 #import "TMDBGenre.h"
 #import "TMDBImage.h"
+#import "TMDBVideo.h"
 #import "TMDBImageResponse.h"
+#import "TMDBVideoResponse.h"
+#import "TMDBCreditsResponse.h"
 #import "TMDBConstant.h"
 #import <ReactiveCocoa/ReactiveCocoa.h>
 
 @interface TMDBMovie ()
 @property (nonatomic, copy) NSArray *posters;
 @property (nonatomic, copy) NSArray *backdrops;
+@property (nonatomic, copy) NSArray *videoKeys;
+@property (nonatomic, copy) NSArray *casts;
+@property (nonatomic, copy) NSArray *crews;
 @end
 
 @implementation TMDBMovie
@@ -35,6 +41,7 @@
             @"popularityRate": @"popularity",
             @"movieDescription": @"overview",
             @"imdbID": @"imdb_id",
+            @"runtime": @"runtime",
             
             }];
 }
@@ -76,5 +83,18 @@
         NSString *url = [NSString stringWithFormat:@"%@%@",tmdb_imageBaseURLDomain,image.filePath];
         return [NSURL URLWithString:url];
     }]array];
+}
+
+- (void)updateWithVideoResponse:(TMDBVideoResponse *)response
+{
+    self.videoKeys = [[response.videos.rac_sequence map:^id(TMDBVideo *video) {
+        return video.key;
+    }]array];
+
+}
+- (void)updateWithCreditResponse:(TMDBCreditsResponse *)response
+{
+    self.crews = response.crews;
+    self.casts = response.casts;
 }
 @end

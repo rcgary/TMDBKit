@@ -12,16 +12,19 @@
 @implementation TMDBImageResponse
 + (NSDictionary *)JSONKeyPathsByPropertyKey
 {
-    return @{};
+    return  @{
+              @"backdrops":@"backdrops",
+              @"posters":@"posters",
+              };
 }
 
 + (NSValueTransformer*)backdropsJSONTransformer
 {
-    return [MTLJSONAdapter dictionaryTransformerWithModelClass:TMDBImage.class];
+    return [MTLJSONAdapter arrayTransformerWithModelClass:TMDBImage.class];
 }
 
 + (NSValueTransformer*)postersJSONTransformer
 {
-    return [MTLJSONAdapter dictionaryTransformerWithModelClass:TMDBImage.class];
+    return [MTLJSONAdapter arrayTransformerWithModelClass:TMDBImage.class];
 }
 @end
