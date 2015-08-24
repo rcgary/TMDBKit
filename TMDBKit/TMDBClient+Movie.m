@@ -41,7 +41,7 @@ NSString * const tmdb_upcomingMovies = @"upcoming";
         TMDBMovie *movie = tuple.first;
         TMDBImageResponse *imageResponse = tuple.second;
         TMDBVideoResponse *videoResponse = tuple.third;
-        TMDBCreditsResponse *creditResponse = tuple.fifth;
+        TMDBCreditsResponse *creditResponse = tuple.fourth;
         
         [movie updateWithImageResponse:imageResponse];
         [movie updateWithVideoResponse:videoResponse];

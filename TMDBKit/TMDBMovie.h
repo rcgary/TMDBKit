@@ -21,7 +21,7 @@
 @property (nonatomic, copy, readonly) NSString *originalLanguage;
 @property (nonatomic, copy, readonly) NSString *movieDescription;
 @property (nonatomic, copy, readonly) NSString *originalTitle;
-@property (nonatomic, copy, readonly) NSDate *releaseDate;
+@property (nonatomic, copy, readonly) NSString *releaseDate;
 @property (nonatomic, copy, readonly) NSString *posterPath;
 @property (nonatomic, assign, readonly) double popularityRate;
 @property (nonatomic, copy, readonly) NSString *movieTitle;
