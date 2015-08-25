@@ -14,29 +14,51 @@
 
 @implementation TMDBClient (Search)
 
-- (RACSignal*)searchPath:(NSString*)path withQuery:(NSString*)query class:(Class)resultClass
+- (RACSignal*)searchPath:(NSString*)path withQuery:(NSString*)query class:(Class)resultClass atPage:(NSNumber*)page
 {
     path = [NSString stringWithFormat:@"search/%@",path];
     NSDictionary *parameters = NSDictionaryOfVariableBindings(query);
-    NSURLRequest *request = [self requestWithMethod:@"GET" path:path parameters:parameters];
+    NSURLRequest *request = [self requestWithMethod:@"GET" path:path parameters:parameters page:page];
     return [[self enqueueRequest:request resultClass:TMDBPageResponse.class ]
             flattenMap:^RACStream *(TMDBPageResponse *response) {
-                return [response parseResultWithClass:resultClass];
+                return [response parseResultWithClass:resultClass paged:YES];
             }];
 }
-
-- (RACSignal*)searchListWithQuery:(NSString*)query
+- (RACSignal*)searchWithType:(TMDBSearchType)type withQuery:(NSString*)query atPage:(NSNumber*)page
 {
-    return [self searchPath:@"list" withQuery:query class:TMDBUserList.class];
+    NSString *path;
+    Class resultClass;
+    switch (type) {
+        case TMDBSearchMovie:
+            path = @"movie";
+            resultClass = TMDBMovie.class;
+            break;
+        case TMDBSearchList:
+            path = @"list";
+            resultClass = TMDBUserList.class;
+            break;
+        case TMDBSearchPeople:
+            path = @"person";
+            resultClass = TMDBPerson.class;
+            break;
+        default:
+            break;
+    }
+    return [self searchPath:path withQuery:query class:resultClass atPage:page];
 }
 
-- (RACSignal*)searchPersonWithQuery:(NSString*)query
+- (RACSignal*)searchListWithQuery:(NSString*)query atPage:(NSNumber*)page
 {
-    return [self searchPath:@"person" withQuery:query class:TMDBMovie.class];
+    return [self searchPath:@"list" withQuery:query class:TMDBUserList.class atPage:page];
 }
 
-- (RACSignal*)searchMoviesWithQuery:(NSString*)query
+- (RACSignal*)searchPersonWithQuery:(NSString*)query atPage:(NSNumber*)page
 {
-    return [self searchPath:@"movie" withQuery:query class:TMDBMovie.class];
+    return [self searchPath:@"person" withQuery:query class:TMDBPerson.class atPage:page];
+}
+
+- (RACSignal*)searchMoviesWithQuery:(NSString*)query atPage:(NSNumber*)page
+{
+    return [self searchPath:@"movie" withQuery:query class:TMDBMovie.class atPage:page];
 }
 @end

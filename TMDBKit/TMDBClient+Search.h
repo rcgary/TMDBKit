@@ -7,11 +7,16 @@
 //
 
 #import "TMDBClient.h"
+typedef NS_ENUM(NSInteger, TMDBSearchType) {
+    TMDBSearchMovie,
+    TMDBSearchList,
+    TMDBSearchPeople,
+};
 
 @interface TMDBClient (Search)
-
-- (RACSignal*)searchListWithQuery:(NSString*)query;
-- (RACSignal*)searchPersonWithQuery:(NSString*)query;
-- (RACSignal*)searchMoviesWithQuery:(NSString*)query;
+- (RACSignal*)searchWithType:(TMDBSearchType)type withQuery:(NSString*)query atPage:(NSNumber*)page;
+- (RACSignal*)searchListWithQuery:(NSString*)query atPage:(NSNumber*)page;
+- (RACSignal*)searchPersonWithQuery:(NSString*)query atPage:(NSNumber*)page;
+- (RACSignal*)searchMoviesWithQuery:(NSString*)query atPage:(NSNumber*)page;
 
 @end
