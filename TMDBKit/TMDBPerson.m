@@ -17,6 +17,7 @@
               @"placeOfBirth": @"place_of_birth",
               @"profilePath": @"profile_path",
               @"homePageURL": @"homepage",
+              @"name": @"name",
               }];
 }
 + (NSDateFormatter*)dateFormatter
