@@ -12,8 +12,8 @@
 @property (nonatomic, copy, readonly) NSString *name;
 @property (nonatomic, copy, readonly) NSString *biography;
 @property (nonatomic, copy, readonly) NSArray *alsoKnownAsNames;
-@property (nonatomic, copy, readonly) NSDate *birthday;
-@property (nonatomic, copy, readonly) NSDate *deathday;
+@property (nonatomic, copy, readonly) NSString *birthday;
+@property (nonatomic, copy, readonly) NSString *deathday;
 @property (nonatomic, copy, readonly) NSString *placeOfBirth;
 @property (nonatomic, copy, readonly) NSString *profilePath;
 @property (nonatomic, copy, readonly) NSURL *homePageURL;

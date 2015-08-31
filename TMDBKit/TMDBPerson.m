@@ -18,36 +18,10 @@
               @"profilePath": @"profile_path",
               @"homePageURL": @"homepage",
               @"name": @"name",
+              @"biography": @"biography",
+              @"deathday": @"deathday",
+              @"birthday": @"birthday",
               }];
-}
-+ (NSDateFormatter*)dateFormatter
-{
-    static NSDateFormatter *dateFormatter = nil;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        dateFormatter = [[NSDateFormatter alloc]init];
-        dateFormatter.locale = [NSLocale currentLocale];
-        dateFormatter.dateFormat = @"yyyy-MM-dd";
-    });
-    return dateFormatter;
-}
-
-+ (NSValueTransformer*)birthdayJSONTransformer
-{
-    return [MTLValueTransformer transformerUsingForwardBlock:^id(NSString *string, BOOL *success, NSError **error) {
-        return [self.dateFormatter dateFromString:string];
-    } reverseBlock:^id(NSDate *date, BOOL *success, NSError **error) {
-        return [self.dateFormatter stringFromDate:date];
-    }];
-}
-
-+ (NSValueTransformer*)deathdayJSONTransformer
-{
-    return [MTLValueTransformer transformerUsingForwardBlock:^id(NSString *string, BOOL *success, NSError **error) {
-        return [self.dateFormatter dateFromString:string];
-    } reverseBlock:^id(NSDate *date, BOOL *success, NSError **error) {
-        return [self.dateFormatter stringFromDate:date];
-    }];
 }
 
 + (NSValueTransformer *)homePageURLJSONTransformer
