@@ -16,6 +16,5 @@
 @property (nonatomic, copy, readonly) NSString *iso639_1;
 @property (nonatomic, copy, readonly) NSString *listType;
 @property (nonatomic, copy, readonly) NSString *name;
-@property (nonatomic, copy, readonly) NSString *posterPath;
 
 @end

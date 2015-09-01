@@ -7,6 +7,12 @@
 //
 
 #import "TMDBPerson.h"
+#import "TMDBCreditsResponse.h"
+
+@interface TMDBPerson()
+@property (nonatomic, copy) NSArray *casts;
+@property (nonatomic, copy) NSArray *crews;
+@end
 
 @implementation TMDBPerson
 + (NSDictionary*)JSONKeyPathsByPropertyKey
@@ -27,5 +33,11 @@
 + (NSValueTransformer *)homePageURLJSONTransformer
 {
     return [NSValueTransformer valueTransformerForName:MTLURLValueTransformerName];
+}
+
+- (void)updateWithCreditResponse:(TMDBCreditsResponse *)response
+{
+    self.crews = response.crews;
+    self.casts = response.casts;
 }
 @end

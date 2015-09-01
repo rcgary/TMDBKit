@@ -9,13 +9,23 @@
 #import "TMDBClient+Person.h"
 #import "TMDBPageResponse+Parse.h"
 #import "TMDBPerson.h"
+#import "TMDBCreditsResponse.h"
 
 @implementation TMDBClient (Person)
 - (RACSignal*)personFromID:(NSString*)personID
 {
     NSString *path = [NSString stringWithFormat:@"person/%@",personID];
     NSURLRequest *request = [self requestWithMethod:@"GET" path:path parameters:nil];
-    return [self enqueueRequest:request resultClass:TMDBPerson.class ];
+    NSString *creditsPath = [NSString stringWithFormat:@"person/%@/movie_credits",personID];
+    NSURLRequest *creditsRequest = [self requestWithMethod:@"GET" path:creditsPath parameters:nil];
+    RACSignal *presonSignal = [self enqueueRequest:request resultClass:TMDBPerson.class];
+    RACSignal *creditsSignal = [self enqueueRequest:creditsRequest resultClass:TMDBCreditsResponse.class];
+    return [[RACSignal combineLatest:@[presonSignal,creditsSignal]] map:^id(RACTuple *tuple) {
+        TMDBPerson *person = tuple.first;
+        TMDBCreditsResponse *creditResponse = tuple.second;
+        [person updateWithCreditResponse:creditResponse];
+        return person;
+    }];
 }
 
 - (RACSignal*)popularPerson

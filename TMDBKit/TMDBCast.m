@@ -19,6 +19,8 @@
               @"creditID": @"credit_id",
               @"order": @"order",
               @"profilePath": @"profile_path",
+              @"posterPath": @"poster_path",
+              
               }];
 }
 @end

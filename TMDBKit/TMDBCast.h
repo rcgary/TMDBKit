@@ -15,4 +15,5 @@
 @property (nonatomic, copy, readonly) NSString *creditID;
 @property (nonatomic, copy, readonly) NSString *name;
 @property (nonatomic, copy, readonly) NSString *profilePath;
+@property (nonatomic, copy, readonly) NSString *posterPath;
 @end
