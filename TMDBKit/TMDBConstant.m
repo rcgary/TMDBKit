@@ -7,4 +7,4 @@
 //
 
 #import "TMDBConstant.h"
-extern NSString * const tmdb_imageBaseURLDomain;
+NSString * const tmdb_imageBaseURLDomain = @"http://image.tmdb.org/t/p/w780";

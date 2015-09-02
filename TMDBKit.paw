@@ -5,7 +5,7 @@
     <databaseInfo>
         <version>134481920</version>
         <UUID>FE4CEB78-65D5-466E-A6F5-671A31654296</UUID>
-        <nextObjectID>177</nextObjectID>
+        <nextObjectID>181</nextObjectID>
         <metadata>
             <plist version="1.0">
                 <dict>
@@ -301,10 +301,10 @@
     </object>
     <object type="LMREQUESTGROUP" id="z130">
         <attribute name="uuid" type="string">23B4C077-5BE0-4A49-87D3-BF838263F828</attribute>
-        <attribute name="order" type="int64">6</attribute>
+        <attribute name="order" type="int64">8</attribute>
         <attribute name="name" type="string">Authentication</attribute>
         <relationship name="parent" type="0/1" destination="LMREQUESTTREEITEM"></relationship>
-        <relationship name="children" type="0/0" destination="LMREQUESTTREEITEM" idrefs="z122 z119 z113 z127"></relationship>
+        <relationship name="children" type="0/0" destination="LMREQUESTTREEITEM" idrefs="z113 z122 z119 z127"></relationship>
         <relationship name="bodyparameters" type="0/0" destination="LMKEYVALUE"></relationship>
         <relationship name="headers" type="0/0" destination="LMKEYVALUE"></relationship>
         <relationship name="urlparameters" type="0/0" destination="LMKEYVALUE"></relationship>
@@ -612,10 +612,10 @@
     </object>
     <object type="LMREQUESTGROUP" id="z158">
         <attribute name="uuid" type="string">5D7FC6D3-AF4E-4988-9A42-3026E7C35249</attribute>
-        <attribute name="order" type="int64">5</attribute>
+        <attribute name="order" type="int64">7</attribute>
         <attribute name="name" type="string">Account</attribute>
         <relationship name="parent" type="0/1" destination="LMREQUESTTREEITEM"></relationship>
-        <relationship name="children" type="0/0" destination="LMREQUESTTREEITEM" idrefs="z156 z152 z142 z138 z151 z133 z149 z154 z141 z129 z146"></relationship>
+        <relationship name="children" type="0/0" destination="LMREQUESTTREEITEM" idrefs="z149 z138 z154 z146 z133 z129 z142 z152 z151 z141 z156"></relationship>
         <relationship name="bodyparameters" type="0/0" destination="LMKEYVALUE"></relationship>
         <relationship name="headers" type="0/0" destination="LMKEYVALUE"></relationship>
         <relationship name="urlparameters" type="0/0" destination="LMKEYVALUE"></relationship>
@@ -678,10 +678,10 @@
     </object>
     <object type="LMREQUESTGROUP" id="z164">
         <attribute name="uuid" type="string">A014B169-2EBC-4488-BD32-88B13CA1A45E</attribute>
-        <attribute name="order" type="int64">4</attribute>
+        <attribute name="order" type="int64">6</attribute>
         <attribute name="name" type="string">Movie</attribute>
         <relationship name="parent" type="0/1" destination="LMREQUESTTREEITEM"></relationship>
-        <relationship name="children" type="0/0" destination="LMREQUESTTREEITEM" idrefs="z162 z172 z168 z160 z166 z170 z174"></relationship>
+        <relationship name="children" type="0/0" destination="LMREQUESTTREEITEM" idrefs="z166 z172 z174 z160 z170 z162 z168"></relationship>
         <relationship name="bodyparameters" type="0/0" destination="LMKEYVALUE"></relationship>
         <relationship name="headers" type="0/0" destination="LMKEYVALUE"></relationship>
         <relationship name="urlparameters" type="0/0" destination="LMKEYVALUE"></relationship>
@@ -726,7 +726,7 @@
     </object>
     <object type="LMREQUEST" id="z168">
         <attribute name="uuid" type="string">E36BA855-EE9B-4EC7-950C-205E94A8C411</attribute>
-        <attribute name="url" type="string">[{"data":{"environmentVariable":"5B98547F-FD3A-45D3-9BA2-8BE80991C07A"},"identifier":"com.luckymarmot.EnvironmentVariableDynamicValue"},"\\/movie\\/63?api_key=",{"data":{"environmentVariable":"DBCC4A82-6EBC-4AC0-A30E-4DAE722CC164"},"identifier":"com.luckymarmot.EnvironmentVariableDynamicValue"}]</attribute>
+        <attribute name="url" type="string">[{"data":{"environmentVariable":"5B98547F-FD3A-45D3-9BA2-8BE80991C07A"},"identifier":"com.luckymarmot.EnvironmentVariableDynamicValue"},"\\/movie\\/177677?api_key=",{"data":{"environmentVariable":"DBCC4A82-6EBC-4AC0-A30E-4DAE722CC164"},"identifier":"com.luckymarmot.EnvironmentVariableDynamicValue"}]</attribute>
         <attribute name="storecookies" type="bool">1</attribute>
         <attribute name="sendcookies" type="bool">1</attribute>
         <attribute name="redirectmethod" type="bool">0</attribute>
@@ -833,10 +833,56 @@
         <attribute name="redirectauthorization" type="bool">0</attribute>
         <attribute name="method" type="string">GET</attribute>
         <attribute name="followredirects" type="bool">0</attribute>
+        <attribute name="order" type="int64">4</attribute>
+        <attribute name="name" type="string">search/person</attribute>
+        <relationship name="parent" type="0/1" destination="LMREQUESTTREEITEM"></relationship>
+        <relationship name="children" type="0/0" destination="LMREQUESTTREEITEM"></relationship>
+        <relationship name="headers" type="0/0" destination="LMKEYVALUE" idrefs="z176"></relationship>
+    </object>
+    <object type="LMREQUEST" id="z178">
+        <attribute name="uuid" type="string">8BDCD43D-1D7E-4F1C-97B9-D8F4CB738DD7</attribute>
+        <attribute name="url" type="string">[{"data":{"environmentVariable":"5B98547F-FD3A-45D3-9BA2-8BE80991C07A"},"identifier":"com.luckymarmot.EnvironmentVariableDynamicValue"},"\\/search\\/trending?api_key=",{"data":{"environmentVariable":"DBCC4A82-6EBC-4AC0-A30E-4DAE722CC164"},"identifier":"com.luckymarmot.EnvironmentVariableDynamicValue"}]</attribute>
+        <attribute name="storecookies" type="bool">1</attribute>
+        <attribute name="sendcookies" type="bool">1</attribute>
+        <attribute name="redirectmethod" type="bool">0</attribute>
+        <attribute name="redirectauthorization" type="bool">0</attribute>
+        <attribute name="method" type="string">GET</attribute>
+        <attribute name="followredirects" type="bool">0</attribute>
+        <attribute name="order" type="int64">5</attribute>
+        <attribute name="name" type="string">search/trending</attribute>
+        <relationship name="parent" type="0/1" destination="LMREQUESTTREEITEM"></relationship>
+        <relationship name="children" type="0/0" destination="LMREQUESTTREEITEM"></relationship>
+        <relationship name="headers" type="0/0" destination="LMKEYVALUE" idrefs="z179"></relationship>
+    </object>
+    <object type="LMKEYVALUE" id="z179">
+        <attribute name="order" type="int64">0</attribute>
+        <attribute name="enabled" type="bool">1</attribute>
+        <relationship name="groupforbodyparameters" type="0/1" destination="LMREQUESTGROUP"></relationship>
+        <relationship name="groupforheaders" type="0/1" destination="LMREQUESTGROUP"></relationship>
+        <relationship name="groupforurlparameters" type="0/1" destination="LMREQUESTGROUP"></relationship>
+        <relationship name="request" type="0/1" destination="LMREQUEST" idrefs="z178"></relationship>
+    </object>
+    <object type="LMREQUEST" id="z180">
+        <attribute name="uuid" type="string">9FAD09D8-2F5F-4034-8738-3E9150CD9650</attribute>
+        <attribute name="url" type="string">[{"data":{"environmentVariable":"5B98547F-FD3A-45D3-9BA2-8BE80991C07A"},"identifier":"com.luckymarmot.EnvironmentVariableDynamicValue"},"\\/tv\\/1396?api_key=",{"data":{"environmentVariable":"DBCC4A82-6EBC-4AC0-A30E-4DAE722CC164"},"identifier":"com.luckymarmot.EnvironmentVariableDynamicValue"}]</attribute>
+        <attribute name="storecookies" type="bool">1</attribute>
+        <attribute name="sendcookies" type="bool">1</attribute>
+        <attribute name="redirectmethod" type="bool">0</attribute>
+        <attribute name="redirectauthorization" type="bool">0</attribute>
+        <attribute name="method" type="string">GET</attribute>
+        <attribute name="followredirects" type="bool">0</attribute>
         <attribute name="order" type="int64">3</attribute>
         <attribute name="name" type="string">/person/{id} Duplicate</attribute>
         <relationship name="parent" type="0/1" destination="LMREQUESTTREEITEM"></relationship>
         <relationship name="children" type="0/0" destination="LMREQUESTTREEITEM"></relationship>
-        <relationship name="headers" type="0/0" destination="LMKEYVALUE" idrefs="z176"></relationship>
+        <relationship name="headers" type="0/0" destination="LMKEYVALUE" idrefs="z181"></relationship>
+    </object>
+    <object type="LMKEYVALUE" id="z181">
+        <attribute name="order" type="int64">0</attribute>
+        <attribute name="enabled" type="bool">1</attribute>
+        <relationship name="groupforbodyparameters" type="0/1" destination="LMREQUESTGROUP"></relationship>
+        <relationship name="groupforheaders" type="0/1" destination="LMREQUESTGROUP"></relationship>
+        <relationship name="groupforurlparameters" type="0/1" destination="LMREQUESTGROUP"></relationship>
+        <relationship name="request" type="0/1" destination="LMREQUEST" idrefs="z180"></relationship>
     </object>
 </database>

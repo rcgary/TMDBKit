@@ -17,6 +17,8 @@
 #import "TMDBVideo.h"
 #import "TMDBCrew.h"
 #import "TMDBCast.h"
+#import "TMDBTVShow.h"
+#import "TMDBSeason.h"
 
 #import "TMDBClient+Account.h"
 #import "TMDBClient+Authentication.h"

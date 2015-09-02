@@ -7,5 +7,4 @@
 //
 
 #import <Foundation/Foundation.h>
-
-NSString * const tmdb_imageBaseURLDomain = @"http://image.tmdb.org/t/p/w780";
+extern NSString * const tmdb_imageBaseURLDomain;
