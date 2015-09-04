@@ -50,11 +50,11 @@ describe(@"TMDBMovieSpec", ^{
     expect(movie.objectID).equal(135397);
     expect(movie.originalLanguage).equal(@"en");
     expect(movie.originalTitle).equal(@"Jurassic World");
-    expect(movie.movieDescription).equal(@"Twenty-two years after the events of Jurassic Park, Isla Nublar now features a fully functioning dinosaur theme park, Jurassic World, as originally envisioned by John Hammond.");
+    expect(movie.overview).equal(@"Twenty-two years after the events of Jurassic Park, Isla Nublar now features a fully functioning dinosaur theme park, Jurassic World, as originally envisioned by John Hammond.");
     expect(movie.releaseDate).notTo.beNil();
     expect(movie.posterPath).equal(@"/uXZYawqUsChGSj54wcuBtEdUJbh.jpg");
     expect(movie.popularityRate).equal(83.059414);
-    expect(movie.movieTitle).equal(@"Jurassic World");
+    expect(movie.title).equal(@"Jurassic World");
     expect(movie.video).equal(NO);
     expect(movie.voteAverage).equal(7.0);
     expect(movie.voteCount).equal(1340);

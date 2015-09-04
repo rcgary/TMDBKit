@@ -163,6 +163,7 @@
 		A005AC721B96ABCF00416DF3 /* TMDBSeason.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMDBSeason.m; sourceTree = "<group>"; };
 		A005AC741B96AF5C00416DF3 /* TMDBClient+TVShow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TMDBClient+TVShow.h"; sourceTree = "<group>"; };
 		A005AC751B96AF5C00416DF3 /* TMDBClient+TVShow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TMDBClient+TVShow.m"; sourceTree = "<group>"; };
+		A06A7C701B99636B0062E12A /* TMDBMedia.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMDBMedia.h; sourceTree = "<group>"; };
 		A0BDB6761B5767FE00E70654 /* libTMDBKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libTMDBKit.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0BDB6791B5767FE00E70654 /* TMDBKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TMDBKit.h; sourceTree = "<group>"; };
 		A0BDB6811B5767FE00E70654 /* TMDBKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TMDBKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -235,6 +236,7 @@
 				68117AF71B87436000AA1BEE /* TMDBCrew.m */,
 				68B9F8F91B6DBE1C006758C2 /* TMDBPerson.h */,
 				68B9F8FA1B6DBE1C006758C2 /* TMDBPerson.m */,
+				A06A7C701B99636B0062E12A /* TMDBMedia.h */,
 			);
 			name = Object;
 			sourceTree = "<group>";

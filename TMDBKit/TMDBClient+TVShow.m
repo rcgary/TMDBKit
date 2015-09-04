@@ -21,10 +21,10 @@ NSString * const tmdb_airingToday = @"airing_today";
 
 - (RACSignal*)tvShowWithID:(NSString*)ID
 {
-    NSString *path = [NSString stringWithFormat:@"movie/%@",ID];
-    NSString *imagePath = [NSString stringWithFormat:@"movie/%@/images",ID];
-    NSString *videoPath = [NSString stringWithFormat:@"movie/%@/videos",ID];
-    NSString *creditPath = [NSString stringWithFormat:@"movie/%@/credits",ID];
+    NSString *path = [NSString stringWithFormat:@"tv/%@",ID];
+    NSString *imagePath = [NSString stringWithFormat:@"tv/%@/images",ID];
+    NSString *videoPath = [NSString stringWithFormat:@"tv/%@/videos",ID];
+    NSString *creditPath = [NSString stringWithFormat:@"tv/%@/credits",ID];
     
     NSURLRequest *request = [self requestWithMethod:@"GET" path:path parameters:nil];
     NSURLRequest *imageRequest = [self requestWithMethod:@"GET" path:imagePath parameters:nil];

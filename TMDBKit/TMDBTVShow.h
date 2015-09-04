@@ -7,25 +7,22 @@
 //
 
 #import "TMDBObject.h"
+#import "TMDBMedia.h"
 
-@class TMDBImageResponse;
-@class TMDBVideoResponse;
-@class TMDBCreditsResponse;
-
-@interface TMDBTVShow : TMDBObject
+@interface TMDBTVShow : TMDBObject<TMDBMedia>
 @property (nonatomic, copy, readonly) NSString *backdropPath;
 @property (nonatomic, copy, readonly) NSArray *createdBy;
 @property (nonatomic, copy, readonly) NSArray *genres;
 
 @property (nonatomic, copy, readonly) NSArray *languages;
-@property (nonatomic, copy, readonly) NSString *showDescription;
+@property (nonatomic, copy, readonly) NSString *overview;
 @property (nonatomic, copy, readonly) NSString *originalLanguage;
 @property (nonatomic, copy, readonly) NSString *originalTitle;
 @property (nonatomic, copy, readonly) NSString *lastAirDate;
 @property (nonatomic, copy, readonly) NSString *firstAirDate;
 @property (nonatomic, copy, readonly) NSString *posterPath;
 @property (nonatomic, assign, readonly) double popularityRate;
-@property (nonatomic, copy, readonly) NSString *showTitle;
+@property (nonatomic, copy, readonly) NSString *title;
 @property (nonatomic, assign, readonly) BOOL inProduction;
 @property (nonatomic, assign, readonly) double voteAverage;
 @property (nonatomic, assign, readonly) NSInteger voteCount;

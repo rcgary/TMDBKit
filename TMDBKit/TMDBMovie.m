@@ -37,9 +37,9 @@
             @"posterPath": @"poster_path",
             @"voteAverage": @"vote_average",
             @"voteCount": @"vote_count",
-            @"movieTitle": @"title",
+            @"title": @"title",
             @"popularityRate": @"popularity",
-            @"movieDescription": @"overview",
+            @"overview": @"overview",
             @"imdbID": @"imdb_id",
             @"runtime": @"runtime",
             

@@ -9,6 +9,7 @@
 #import "TMDBClient.h"
 
 #import "TMDBObject.h"
+#import "TMDBMedia.h"
 #import "TMDBGenre.h"
 #import "TMDBMovie.h"
 #import "TMDBUser.h"
