@@ -54,7 +54,7 @@ NSString * const tmdb_airingToday = @"airing_today";
     NSURLRequest *request = [self requestWithMethod:@"GET" path:path parameters:nil page:page];
     return [[self enqueueRequest:request resultClass:TMDBPageResponse.class ]
             flattenMap:^RACStream *(TMDBPageResponse *response) {
-                return [response parseResultWithClass:TMDBTVShow.class paged:YES];
+                return [response parseResultWithClass:TMDBTVShow.class paged:page != nil];
             }];
 }
 
@@ -66,7 +66,7 @@ NSString * const tmdb_airingToday = @"airing_today";
 
 - (RACSignal*)onAirTVShows
 {
-    return [self fetchTVShowsWithPath:tmdb_onTheAirShows atPage:@1];
+    return [self fetchTVShowsWithPath:tmdb_onTheAirShows atPage:nil];
 }
 
 - (RACSignal*)onAirTVShowsAtPage:(NSNumber*)page
@@ -77,7 +77,7 @@ NSString * const tmdb_airingToday = @"airing_today";
 - (RACSignal*)airingTodayTVShows
 {
     
-    return [self fetchTVShowsWithPath:tmdb_airingToday atPage:@1];
+    return [self fetchTVShowsWithPath:tmdb_airingToday atPage:nil];
 }
 
 - (RACSignal*)airingTodayTVShowsAtPage:(NSNumber*)page
@@ -88,7 +88,7 @@ NSString * const tmdb_airingToday = @"airing_today";
 - (RACSignal*)topRatedTVShows
 {
     
-    return [self fetchTVShowsWithPath:tmdb_topRatedShows atPage:@1];
+    return [self fetchTVShowsWithPath:tmdb_topRatedShows atPage:nil];
 }
 
 - (RACSignal*)topRatedTVShowsAtPage:(NSNumber*)page
@@ -100,7 +100,7 @@ NSString * const tmdb_airingToday = @"airing_today";
 - (RACSignal*)popularTVShows
 {
     
-    return [self fetchTVShowsWithPath:tmdb_popularShows atPage:@1];
+    return [self fetchTVShowsWithPath:tmdb_popularShows atPage:nil];
 }
 
 - (RACSignal*)popularTVShowsAtPage:(NSNumber*)page

@@ -40,7 +40,7 @@
               @"posterPath": @"poster_path",
               @"voteAverage": @"vote_average",
               @"voteCount": @"vote_count",
-              @"showTitle": @"title",
+              @"showTitle": @"name",
               @"popularityRate": @"popularity",
               @"showDescription": @"overview",
               @"episodeRunTimes": @"episode_run_time",

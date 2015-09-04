@@ -7,6 +7,10 @@
 //
 
 #import "TMDBClient.h"
+extern NSString * const tmdb_onTheAirShows;
+extern NSString * const tmdb_popularShows;
+extern NSString * const tmdb_topRatedShows;
+extern NSString * const tmdb_airingToday;
 
 @interface TMDBClient (TVShow)
 - (RACSignal*)tvShowWithID:(NSString*)ID;

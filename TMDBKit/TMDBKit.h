@@ -23,6 +23,7 @@
 #import "TMDBClient+Account.h"
 #import "TMDBClient+Authentication.h"
 #import "TMDBClient+Movie.h"
+#import "TMDBClient+TVShow.h"
 #import "TMDBClient+Genres.h"
 #import "TMDBClient+Discover.h"
 #import "TMDBClient+Person.h"
