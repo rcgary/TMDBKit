@@ -9,7 +9,7 @@
 #import "TMDBClient.h"
 typedef NS_ENUM(NSInteger, TMDBSearchType) {
     TMDBSearchMovie,
-    TMDBSearchList,
+    TMDBSearchTVShow,
     TMDBSearchPeople,
 };
 

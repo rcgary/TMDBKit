@@ -11,6 +11,7 @@
 #import "TMDBMovie.h"
 #import "TMDBPerson.h"
 #import "TMDBUserList.h"
+#import "TMDBTVShow.h"
 
 @implementation TMDBClient (Search)
 
@@ -33,9 +34,9 @@
             path = @"movie";
             resultClass = TMDBMovie.class;
             break;
-        case TMDBSearchList:
-            path = @"list";
-            resultClass = TMDBUserList.class;
+        case TMDBSearchTVShow:
+            path = @"tv";
+            resultClass = TMDBTVShow.class;
             break;
         case TMDBSearchPeople:
             path = @"person";
@@ -49,7 +50,7 @@
 
 - (RACSignal*)searchListWithQuery:(NSString*)query atPage:(NSNumber*)page
 {
-    return [self searchPath:@"list" withQuery:query class:TMDBUserList.class atPage:page];
+    return [self searchPath:@"tv" withQuery:query class:TMDBTVShow.class atPage:page];
 }
 
 - (RACSignal*)searchPersonWithQuery:(NSString*)query atPage:(NSNumber*)page

@@ -45,7 +45,9 @@ static NSString *dominURLString = @"http://api.themoviedb.org/3";
 {
     TMDBClient *client = [TMDBClient clientWithAPIKey:apikey];
     client.sessionID = sessionID;
-    client.user = user;
+    if (user) {
+        client.user = user;
+    }
     return client;
 }
 
@@ -94,7 +96,7 @@ static NSString *dominURLString = @"http://api.themoviedb.org/3";
 {
     NSURLCredential *credential = [NSURLCredentialStorage.sharedCredentialStorage defaultCredentialForProtectionSpace:[self protectionSpace]];
     
-    if (credential == nil || !credential.hasPassword) return [RACSignal empty];
+    if (credential == nil || !credential.hasPassword) return [RACSignal error:[NSError errorWithDomain:@"No credential" code:1001 userInfo:nil]];
     
     return [RACSignal return:credential];
 }
