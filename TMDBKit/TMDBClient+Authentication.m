@@ -36,7 +36,7 @@
         [client updateSessionID:tokenResponse.sessionID];
         return [client userAccount];
     }] flattenMap:^RACStream *(TMDBUser *user) {
-        [client updateUser:user];
+        [client updateSessionID:client.sessionID user:user];
         return [RACSignal return:client];
     }];
 }
@@ -52,8 +52,12 @@
 
 + (RACSignal *)authenticatedClientWithSavedCredentials
 {
-    return [[[self restoreCredential] flattenMap:^RACStream *(NSURLCredential *credential) {
-        TMDBClient *client = [TMDBClient clientWithSessionID:credential.password user:nil];
+    __block TMDBClient *client = nil;
+    return [[[[self restoreCredential] flattenMap:^RACStream *(NSURLCredential *credential) {
+        client = [TMDBClient clientWithSessionID:credential.password user:nil];
+        return [client userAccount];
+    }] flattenMap:^RACStream *(TMDBUser *user) {
+        [client updateSessionID:client.sessionID user:user];
         return [RACSignal return:client];
     }]catch:^RACSignal *(NSError *error) {
         return [RACSignal return:[TMDBClient client]];

@@ -16,6 +16,7 @@
 
 @property (nonatomic, getter = isAuthenticated, readonly) BOOL authenticated;
 @property (nonatomic, copy, readonly) TMDBUser *user;
+@property (nonatomic, copy, readonly) NSString *sessionID;
 
 + (instancetype)client;
 + (instancetype)clientWithSessionID:(NSString*)sessionID user:(TMDBUser*)user;
@@ -40,7 +41,7 @@
 - (void)updateSessionID:(NSString*)sessionID;
 - (void)updateUser:(TMDBUser*)user;
 
-- (RACSignal *)updateSessionID:(NSString*)sessionID user:(TMDBUser*)user;
+- (void)updateSessionID:(NSString*)sessionID user:(TMDBUser*)user;
 - (RACSignal *)removeCredential;
 + (RACSignal *)restoreCredential;
 @end

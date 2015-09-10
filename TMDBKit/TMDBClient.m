@@ -73,23 +73,17 @@ static NSString *dominURLString = @"http://api.themoviedb.org/3";
     self.user = user;
 }
 
-- (RACSignal*)updateSessionID:(NSString*)sessionID user:(TMDBUser*)user
+- (void)updateSessionID:(NSString*)sessionID user:(TMDBUser*)user
 {
-    return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
-        self.sessionID = sessionID;
-        self.user = user;
-        
-        NSURLCredential *credential = [[NSURLCredential alloc] initWithUser:user.name
-                                                                   password:sessionID
-                                                                persistence:NSURLCredentialPersistencePermanent];
-        [NSURLCredentialStorage.sharedCredentialStorage setDefaultCredential:credential
-                                                          forProtectionSpace:[self.class protectionSpace]];
-        
-        [subscriber sendCompleted];
-        
-        // nothing to dispose
-        return nil;
-    }];
+    self.sessionID = sessionID;
+    self.user = user;
+    
+    NSURLCredential *credential = [[NSURLCredential alloc] initWithUser:user.name
+                                                               password:sessionID
+                                                            persistence:NSURLCredentialPersistencePermanent];
+    [NSURLCredentialStorage.sharedCredentialStorage setDefaultCredential:credential
+                                                      forProtectionSpace:[self.class protectionSpace]];
+    
 }
 
 + (RACSignal*)restoreCredential
@@ -275,8 +269,8 @@ static NSString *dominURLString = @"http://api.themoviedb.org/3";
 - (RACSignal *)enqueueRequest:(NSURLRequest *)request resultClass:(Class)resultClass
 {
     return [[self enqueueRequest:request] flattenMap:^RACStream *(id responseObject) {
-                return [self parsedResponseOfClass:resultClass fromJSON:responseObject];
-            }];
+        return [self parsedResponseOfClass:resultClass fromJSON:responseObject];
+    }];
 }
 
 - (NSMutableURLRequest *)nextPageURLFromOperation:(AFHTTPRequestOperation *)operation
