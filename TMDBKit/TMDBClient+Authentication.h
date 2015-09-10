@@ -13,4 +13,5 @@
 + (RACSignal*)loginAsGusestWithClient:(TMDBClient*)client;
 + (RACSignal*)loginWithUsername:(NSString*)username password:(NSString*)password client:(TMDBClient*)client;
 + (RACSignal *)authenticatedClientWithSavedCredentials;
+- (RACSignal*)logout;
 @end

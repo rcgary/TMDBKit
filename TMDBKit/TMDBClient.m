@@ -111,7 +111,9 @@ static NSString *dominURLString = @"http://api.themoviedb.org/3";
         
         NSDictionary *credentialsDict = [NSURLCredentialStorage.sharedCredentialStorage credentialsForProtectionSpace:self.class.protectionSpace];
         NSURLCredential *credential = [credentialsDict.objectEnumerator nextObject];
-        [NSURLCredentialStorage.sharedCredentialStorage removeCredential:credential forProtectionSpace:self.class.protectionSpace];
+        if (credential) {
+            [NSURLCredentialStorage.sharedCredentialStorage removeCredential:credential forProtectionSpace:self.class.protectionSpace];
+        }
         
         [subscriber sendCompleted];
         
