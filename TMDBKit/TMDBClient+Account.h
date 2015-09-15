@@ -11,7 +11,7 @@
 @interface TMDBClient (Account)
 - (RACSignal*)userAccount;
 - (RACSignal*)getUserLists;
-- (RACSignal*)getFavoriteMovies;
+- (RACSignal*)getFavoriteMoviesAtPage:(NSNumber*)page;
 - (RACSignal*)getRatedMovies;
-- (RACSignal*)getWatchlistMovies;
+- (RACSignal*)getWatchlistMoviesAtPage:(NSNumber*)page;
 @end
