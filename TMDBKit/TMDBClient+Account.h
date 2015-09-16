@@ -7,11 +7,20 @@
 //
 
 #import "TMDBClient.h"
+#import "TMDBMedia.h"
 
+typedef NS_ENUM(NSInteger, TMDBAccountStateType) {
+   TMDBAccountStateFavorite,
+   TMDBAccountStateWatchList,
+};
+
+@class TMDBObject;
 @interface TMDBClient (Account)
 - (RACSignal*)userAccount;
 - (RACSignal*)getUserLists;
 - (RACSignal*)getFavoriteMoviesAtPage:(NSNumber*)page;
 - (RACSignal*)getRatedMovies;
 - (RACSignal*)getWatchlistMoviesAtPage:(NSNumber*)page;
+- (RACSignal *)updateFavoriteStateforMedia:(TMDBObject<TMDBMedia>*)media favorite:(BOOL)favorite;
+- (RACSignal *)updateWatchListStateforMedia:(TMDBObject<TMDBMedia>*)media watchlist:(BOOL)watchlist;
 @end
