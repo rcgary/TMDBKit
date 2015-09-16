@@ -12,6 +12,7 @@
 #import "TMDBImageResponse.h"
 #import "TMDBVideoResponse.h"
 #import "TMDBCreditsResponse.h"
+#import "TMDBAccountStatesResponse.h"
 
 NSString * const tmdb_nowPlayingMovies = @"now_playing";
 NSString * const tmdb_popularMovies = @"popular";
@@ -50,7 +51,7 @@ NSString * const tmdb_upcomingMovies = @"upcoming";
     }];
 }
 
-- (RACSignal*)fetchmoviesWithPath:(NSString*)path atPage:(NSNumber*)page
+- (RACSignal*)fetchMoviesWithPath:(NSString*)path atPage:(NSNumber*)page
 {
     path = [NSString stringWithFormat:@"movie/%@",path];
     NSURLRequest *request = [self requestWithMethod:@"GET" path:path parameters:nil page:page];
@@ -130,5 +131,16 @@ NSString * const tmdb_upcomingMovies = @"upcoming";
             flattenMap:^RACStream *(TMDBPageResponse *response) {
                 return [response parseResultWithClass:TMDBMovie.class];
             }];
+}
+
+- (RACSignal*)accountStatesForMovieID:(NSString*)movieID
+{
+    if (![self isAuthenticated]) {
+        return [RACSignal empty];
+    }
+    
+    NSString *path = [NSString stringWithFormat:@"movie/%@/account_states",movieID];
+    NSURLRequest *request = [self requestWithMethod:@"GET" path:path parameters:nil];
+    return [self enqueueRequest:request resultClass:TMDBAccountStatesResponse.class] ;
 }
 @end

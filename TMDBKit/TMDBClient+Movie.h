@@ -27,6 +27,6 @@ extern NSString * const tmdb_upcomingMovies;
 - (RACSignal*)topRatedMoviesAtPage:(NSNumber*)page;
 - (RACSignal*)upcomingMovies;
 - (RACSignal*)upcomingMoviesAtPage:(NSNumber*)page;
-
-- (RACSignal*)fetchmoviesWithPath:(NSString*)path atPage:(NSNumber*)page;
+- (RACSignal*)accountStatesForMovieID:(NSString*)movieID;
+- (RACSignal*)fetchMoviesWithPath:(NSString*)path atPage:(NSNumber*)page;
 @end

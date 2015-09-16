@@ -38,5 +38,6 @@
 #import "TMDBGenreResponse.h"
 #import "TMDBCreditsResponse.h"
 #import "TMDBStatusResponse.h"
+#import "TMDBAccountStatesResponse.h"
 
 #import "TMDBPageResponse+Parse.h"
