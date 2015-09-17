@@ -7,4 +7,4 @@
 //
 
 #import "TMDBConstant.h"
-NSString * const tmdb_imageBaseURLDomain = @"http://image.tmdb.org/t/p/w780";
+NSString * const tmdb_imageBaseURLDomain = @"https://image.tmdb.org/t/p/w780";

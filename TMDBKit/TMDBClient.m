@@ -19,7 +19,7 @@
 @end
 
 static NSString *apikey = @"2449630792c1f2e7c806b4ab2ee826b5";
-static NSString *dominURLString = @"http://api.themoviedb.org/3";
+static NSString *dominURLString = @"https://api.themoviedb.org/3";
 
 @implementation TMDBClient
 
