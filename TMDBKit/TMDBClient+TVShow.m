@@ -109,14 +109,4 @@ NSString * const tmdb_airingToday = @"airing_today";
     return [self fetchTVShowsWithPath:tmdb_popularShows atPage:page];
 }
 
-- (RACSignal*)accountStatesForShowID:(NSString*)showID
-{
-    if (![self isAuthenticated]) {
-        return [RACSignal empty];
-    }
-    
-    NSString *path = [NSString stringWithFormat:@"tv/%@/account_states",showID];
-    NSURLRequest *request = [self requestWithMethod:@"GET" path:path parameters:nil];
-    return [self enqueueRequest:request resultClass:TMDBAccountStatesResponse.class] ;
-}
 @end

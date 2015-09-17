@@ -25,5 +25,4 @@ extern NSString * const tmdb_airingToday;
 - (RACSignal*)topRatedTVShowsAtPage:(NSNumber*)page;
 - (RACSignal*)popularTVShows;
 - (RACSignal*)popularTVShowsAtPage:(NSNumber*)page;
-- (RACSignal*)accountStatesForShowID:(NSString*)showID;
 @end

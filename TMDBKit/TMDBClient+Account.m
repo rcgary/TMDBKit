@@ -11,6 +11,7 @@
 #import "TMDBPageResponse+Parse.h"
 #import "TMDBUserList.h"
 #import "TMDBMovie.h"
+#import "TMDBAccountStatesResponse.h"
 
 @implementation TMDBClient (Account)
 
@@ -92,6 +93,24 @@
     return [self updateState:TMDBAccountStateWatchList withMediaID:media.objectID mediaType:type value:watchlist];
 }
 
+- (RACSignal*)updateRateForMedia:(NSString*)mediaID mediaType:(NSString*)type value:(double)rateValue
+{
+    if (![self isAuthenticated]) {
+        return [RACSignal empty];
+    }
+    NSString *path = [NSString stringWithFormat:@"%@/%@/rating",type,mediaID];
+    NSNumber *value = @(rateValue);
+    NSDictionary *parameters = NSDictionaryOfVariableBindings(value);
+    NSURLRequest *request = [self requestWithMethod:@"POST" path:path parameters:parameters];
+    return [[self enqueueRequest:request] ignoreValues];
+}
+
+- (RACSignal*)updateRateForMedia:(TMDBObject<TMDBMedia>*)media value:(double)value
+{
+    NSString *type = [media isKindOfClass:TMDBMovie.class] ? @"movie" : @"tv";
+    return [self updateRateForMedia:media.objectID mediaType:type value:value];
+}
+
 
 - (NSString*)stringValueForState:(TMDBAccountStateType)state
 {
@@ -103,6 +122,22 @@
         default:
             break;
     }
+}
+
+- (RACSignal*)accountStatesForMedia:(TMDBObject<TMDBMedia>*)media
+{
+    NSString *type = [media isKindOfClass:TMDBMovie.class] ? @"movie" : @"tv";
+    return [self accountStatesForMediaID:media.objectID type:type];
+}
+- (RACSignal*)accountStatesForMediaID:(NSString*)mediaID type:(NSString*)type
+{
+    if (![self isAuthenticated]) {
+        return [RACSignal empty];
+    }
+    
+    NSString *path = [NSString stringWithFormat:@"%@/%@/account_states",type,mediaID];
+    NSURLRequest *request = [self requestWithMethod:@"GET" path:path parameters:nil];
+    return [self enqueueRequest:request resultClass:TMDBAccountStatesResponse.class] ;
 }
 
 @end
