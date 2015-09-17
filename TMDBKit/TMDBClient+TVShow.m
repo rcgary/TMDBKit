@@ -12,7 +12,7 @@
 #import "TMDBImageResponse.h"
 #import "TMDBVideoResponse.h"
 #import "TMDBCreditsResponse.h"
-
+#import "TMDBAccountStatesResponse.h"
 NSString * const tmdb_onTheAirShows = @"on_the_air";
 NSString * const tmdb_popularShows = @"popular";
 NSString * const tmdb_topRatedShows = @"top_rated";
@@ -107,5 +107,16 @@ NSString * const tmdb_airingToday = @"airing_today";
 {
     
     return [self fetchTVShowsWithPath:tmdb_popularShows atPage:page];
+}
+
+- (RACSignal*)accountStatesForShowID:(NSString*)showID
+{
+    if (![self isAuthenticated]) {
+        return [RACSignal empty];
+    }
+    
+    NSString *path = [NSString stringWithFormat:@"tv/%@/account_states",showID];
+    NSURLRequest *request = [self requestWithMethod:@"GET" path:path parameters:nil];
+    return [self enqueueRequest:request resultClass:TMDBAccountStatesResponse.class] ;
 }
 @end

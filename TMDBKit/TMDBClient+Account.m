@@ -66,6 +66,9 @@
 
 - (RACSignal*)updateState:(TMDBAccountStateType)state withMediaID:(NSString*)mediaID mediaType:(NSString*)type value:(BOOL)value
 {
+    if (![self isAuthenticated]) {
+        return [RACSignal empty];
+    }
     NSString *stateKey = [self stringValueForState:state];
     NSString *path = [NSString stringWithFormat:@"account/%@/%@",self.user.objectID,stateKey];
     NSDictionary *parameters = @{
