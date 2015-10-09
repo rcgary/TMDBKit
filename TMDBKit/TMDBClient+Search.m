@@ -62,4 +62,26 @@
 {
     return [self searchPath:@"movie" withQuery:query class:TMDBMovie.class atPage:page];
 }
+
+- (RACSignal*)searchKeyWords
+{
+    NSURLRequest *request = [self requestWithMethod:@"GET" path:@"search/trending" parameters:nil];
+    return [[self enqueueRequest:request resultClass:TMDBPageResponse.class] flattenMap:^RACStream *(TMDBPageResponse *response) {
+        RACSignal *movies=
+         [[response parseResultWithClass:TMDBMovie.class paged:NO] map:^id(NSArray *medias) {
+           return [[[medias.rac_sequence map:^id(TMDBObject<TMDBMedia> *media) {
+               return media.title;
+           }]take:4] array];
+       }];
+        
+        RACSignal *tvShows= [[response parseResultWithClass:TMDBTVShow.class paged:NO] map:^id(NSArray *medias) {
+            return [[[medias.rac_sequence map:^id(TMDBObject<TMDBMedia> *media) {
+                return media.title;
+            }]take:4] array];
+        }];
+        return [[movies combineLatestWith:tvShows] map:^id(RACTuple *tuple) {
+            return [tuple.first arrayByAddingObjectsFromArray:tuple.second];
+        }];
+    }];
+}
 @end

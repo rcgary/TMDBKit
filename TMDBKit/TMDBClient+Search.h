@@ -18,5 +18,5 @@ typedef NS_ENUM(NSInteger, TMDBSearchType) {
 - (RACSignal*)searchListWithQuery:(NSString*)query atPage:(NSNumber*)page;
 - (RACSignal*)searchPersonWithQuery:(NSString*)query atPage:(NSNumber*)page;
 - (RACSignal*)searchMoviesWithQuery:(NSString*)query atPage:(NSNumber*)page;
-
+- (RACSignal*)searchKeyWords;
 @end
