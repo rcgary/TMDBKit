@@ -63,7 +63,7 @@
     return [self searchPath:@"movie" withQuery:query class:TMDBMovie.class atPage:page];
 }
 
-- (RACSignal*)searchKeyWords
+- (RACSignal*)searchTrendingKeyWords
 {
     NSURLRequest *request = [self requestWithMethod:@"GET" path:@"search/trending" parameters:nil];
     return [[self enqueueRequest:request resultClass:TMDBPageResponse.class] flattenMap:^RACStream *(TMDBPageResponse *response) {

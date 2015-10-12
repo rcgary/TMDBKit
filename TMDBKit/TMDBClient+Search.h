@@ -18,5 +18,8 @@ typedef NS_ENUM(NSInteger, TMDBSearchType) {
 - (RACSignal*)searchListWithQuery:(NSString*)query atPage:(NSNumber*)page;
 - (RACSignal*)searchPersonWithQuery:(NSString*)query atPage:(NSNumber*)page;
 - (RACSignal*)searchMoviesWithQuery:(NSString*)query atPage:(NSNumber*)page;
-- (RACSignal*)searchKeyWords;
+/**
+ *  Return a RACSignal which has 8 trending search keywords in NSArray
+ */
+- (RACSignal*)searchTrendingKeyWords;
 @end
