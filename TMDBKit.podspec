@@ -13,7 +13,7 @@ Pod::Spec.new do |s|
   s.requires_arc = true
 
   s.dependency 'AFNetworking'
-  s.dependency 'Mantle'
-  s.dependency 'ReactiveCocoa'
+  s.dependency 'Mantle', '2.0.2'
+  s.dependency 'ReactiveCocoa', '~> 2.5'
 
 end

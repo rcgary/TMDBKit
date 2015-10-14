@@ -35,11 +35,11 @@ PODS:
   - Specta (1.0.2)
 
 DEPENDENCIES:
-  - AFNetworking
+  - AFNetworking (~> 2.5.4)
   - Expecta
-  - Mantle
+  - Mantle (~> 2.0.2)
   - OHHTTPStubs
-  - ReactiveCocoa
+  - ReactiveCocoa (~> 2.5)
   - Specta
 
 SPEC CHECKSUMS:
@@ -50,4 +50,4 @@ SPEC CHECKSUMS:
   ReactiveCocoa: e2db045570aa97c695e7aa97c2bcab222ae51f4a
   Specta: 9cec98310dca411f7c7ffd6943552b501622abfe
 
-COCOAPODS: 0.38.2
+COCOAPODS: 0.39.0
