@@ -43,6 +43,17 @@
             }];
 }
 
+- (RACSignal*)getFavoriteTVShowsAtPage:(NSNumber*)page
+{
+    NSString *path = [NSString stringWithFormat:@"account/%@/favorite/tv",self.user.objectID];
+    NSDictionary *parameters = @{@"sort_by":@"created_at.desc"};
+    NSURLRequest *request = [self requestWithMethod:@"GET" path:path parameters:parameters page:page];
+    return [[self enqueueRequest:request resultClass:TMDBPageResponse.class ]
+            flattenMap:^RACStream *(TMDBPageResponse *response) {
+                return [response parseResultWithClass:TMDBMovie.class];
+            }];
+}
+
 - (RACSignal*)getRatedMovies
 {
     NSString *path = [NSString stringWithFormat:@"account/%@/rated/movies",self.user.objectID];
@@ -57,6 +68,17 @@
 - (RACSignal*)getWatchlistMoviesAtPage:(NSNumber*)page
 {
     NSString *path = [NSString stringWithFormat:@"account/%@/watchlist/movies",self.user.objectID];
+    NSDictionary *parameters = @{@"sort_by":@"created_at.desc"};
+    NSURLRequest *request = [self requestWithMethod:@"GET" path:path parameters:parameters page:page];
+    return [[self enqueueRequest:request resultClass:TMDBPageResponse.class]
+            flattenMap:^RACStream *(TMDBPageResponse *response) {
+                return [response parseResultWithClass:TMDBMovie.class];
+            }];
+}
+
+- (RACSignal*)getWatchlistTVShowsAtPage:(NSNumber*)page
+{
+    NSString *path = [NSString stringWithFormat:@"account/%@/watchlist/tv",self.user.objectID];
     NSDictionary *parameters = @{@"sort_by":@"created_at.desc"};
     NSURLRequest *request = [self requestWithMethod:@"GET" path:path parameters:parameters page:page];
     return [[self enqueueRequest:request resultClass:TMDBPageResponse.class]
