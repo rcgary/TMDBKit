@@ -11,6 +11,7 @@
 #import "TMDBPageResponse+Parse.h"
 #import "TMDBUserList.h"
 #import "TMDBMovie.h"
+#import "TMDBTVShow.h"
 #import "TMDBAccountStatesResponse.h"
 
 @implementation TMDBClient (Account)
@@ -50,7 +51,7 @@
     NSURLRequest *request = [self requestWithMethod:@"GET" path:path parameters:parameters page:page];
     return [[self enqueueRequest:request resultClass:TMDBPageResponse.class ]
             flattenMap:^RACStream *(TMDBPageResponse *response) {
-                return [response parseResultWithClass:TMDBMovie.class];
+                return [response parseResultWithClass:TMDBTVShow.class];
             }];
 }
 
@@ -83,7 +84,7 @@
     NSURLRequest *request = [self requestWithMethod:@"GET" path:path parameters:parameters page:page];
     return [[self enqueueRequest:request resultClass:TMDBPageResponse.class]
             flattenMap:^RACStream *(TMDBPageResponse *response) {
-                return [response parseResultWithClass:TMDBMovie.class];
+                return [response parseResultWithClass:TMDBTVShow.class];
             }];
 }
 

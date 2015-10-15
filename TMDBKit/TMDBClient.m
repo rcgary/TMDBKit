@@ -77,6 +77,10 @@ static NSString *dominURLString = @"https://api.themoviedb.org/3";
 {
     self.sessionID = sessionID;
     self.user = user;
+    if (!sessionID)
+    {
+        NSLog(@"%@",user);
+    }
     
     NSURLCredential *credential = [[NSURLCredential alloc] initWithUser:user.name
                                                                password:sessionID
