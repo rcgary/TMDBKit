@@ -60,7 +60,7 @@
         [client updateSessionID:client.sessionID user:user];
         return [RACSignal return:client];
     }]catch:^RACSignal *(NSError *error) {
-        return [RACSignal return:[TMDBClient client]];
+        return [RACSignal return:nil];
     }];
 }
 

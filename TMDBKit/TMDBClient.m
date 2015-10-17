@@ -33,6 +33,7 @@ static NSString *dominURLString = @"https://api.themoviedb.org/3";
 + (instancetype)clientWithBaseURL:(NSString *)baseURL
 {
     TMDBClient *client = [[TMDBClient alloc]initWithBaseURL:[NSURL URLWithString:baseURL]];
+    client.requestSerializer = [AFJSONRequestSerializer serializer];
     return client;
 }
 
@@ -235,9 +236,13 @@ static NSString *dominURLString = @"https://api.themoviedb.org/3";
     if (self.isAuthenticated) {
         parameters = [parameters mtl_dictionaryByAddingEntriesFromDictionary:@{@"session_id": self.sessionID}];
     }
+    NSString *urlString = [[NSURL URLWithString:path relativeToURL:self.baseURL] absoluteString];
+    if ([method isEqualToString:@"POST"] && self.isAuthenticated) {
+        urlString = [urlString stringByAppendingString:[NSString stringWithFormat:@"?api_key=%@&session_id=%@",self.apiKey,self.sessionID]];
+    }
     
     NSMutableURLRequest *request = [self.requestSerializer requestWithMethod:method
-                                                                   URLString:[[NSURL URLWithString:path relativeToURL:self.baseURL] absoluteString]
+                                                                   URLString:urlString
                                                                   parameters:parameters
                                                                        error:nil];
     return request;
