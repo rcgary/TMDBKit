@@ -238,6 +238,7 @@ static NSString *dominURLString = @"https://api.themoviedb.org/3";
     }
     NSString *urlString = [[NSURL URLWithString:path relativeToURL:self.baseURL] absoluteString];
     if ([method isEqualToString:@"POST"] && self.isAuthenticated) {
+        // If it's post call we need add the api key and sessionID inside there
         urlString = [urlString stringByAppendingString:[NSString stringWithFormat:@"?api_key=%@&session_id=%@",self.apiKey,self.sessionID]];
     }
     
