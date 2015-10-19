@@ -26,8 +26,8 @@
 @property (nonatomic, assign, readonly) BOOL inProduction;
 @property (nonatomic, assign, readonly) double voteAverage;
 @property (nonatomic, assign, readonly) NSInteger voteCount;
-@property (nonatomic, assign, readonly) NSArray *episodeRunTimes;
-@property (nonatomic, assign, readonly) NSArray *seasons;
+@property (nonatomic, copy, readonly) NSArray *episodeRunTimes;
+@property (nonatomic, copy, readonly) NSArray *seasons;
 
 @property (nonatomic, copy, readonly) NSArray *posters;
 @property (nonatomic, copy, readonly) NSArray *backdrops;
