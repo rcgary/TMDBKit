@@ -20,6 +20,7 @@
 #import "TMDBCast.h"
 #import "TMDBTVShow.h"
 #import "TMDBSeason.h"
+#import "TMDBEpisode.h"
 
 #import "TMDBClient+Account.h"
 #import "TMDBClient+Authentication.h"
@@ -29,6 +30,7 @@
 #import "TMDBClient+Discover.h"
 #import "TMDBClient+Person.h"
 #import "TMDBClient+Search.h"
+#import "TMDBClient+Season.h"
 
 #import "TMDBPageResponse.h"
 #import "TMDBConfigurationResponse.h"

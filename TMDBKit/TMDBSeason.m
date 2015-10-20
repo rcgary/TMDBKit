@@ -7,6 +7,7 @@
 //
 
 #import "TMDBSeason.h"
+#import "TMDBEpisode.h"
 
 @implementation TMDBSeason
 + (NSDictionary*)JSONKeyPathsByPropertyKey
@@ -17,6 +18,14 @@
               @"airDate": @"air_date",
               @"episodeCount": @"episode_count",
               @"seasonNumber": @"season_number",
+              @"name": @"name",
+              @"overview": @"overview",
+              @"episodes": @"episodes",
               }];
+}
+
++ (NSValueTransformer*)episodesJSONTransformer
+{
+    return [MTLJSONAdapter arrayTransformerWithModelClass:TMDBEpisode.class];
 }
 @end

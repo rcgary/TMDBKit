@@ -54,6 +54,8 @@
 		A005AC761B96AF5C00416DF3 /* TMDBClient+TVShow.m in Sources */ = {isa = PBXBuildFile; fileRef = A005AC751B96AF5C00416DF3 /* TMDBClient+TVShow.m */; };
 		A07A39841BA8ECD30059963B /* TMDBStatusResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = A07A39831BA8ECD30059963B /* TMDBStatusResponse.m */; };
 		A07A39871BA926B10059963B /* TMDBAccountStatesResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = A07A39861BA926B10059963B /* TMDBAccountStatesResponse.m */; };
+		A0846C4C1BD5DF9C000B37FB /* TMDBEpisode.m in Sources */ = {isa = PBXBuildFile; fileRef = A0846C4B1BD5DF9C000B37FB /* TMDBEpisode.m */; settings = {ASSET_TAGS = (); }; };
+		A0846C521BD5E2C3000B37FB /* TMDBClient+Season.m in Sources */ = {isa = PBXBuildFile; fileRef = A0846C511BD5E2C3000B37FB /* TMDBClient+Season.m */; settings = {ASSET_TAGS = (); }; };
 		A0BDB67A1B5767FE00E70654 /* TMDBKit.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = A0BDB6791B5767FE00E70654 /* TMDBKit.h */; };
 		A0BDB6821B5767FE00E70654 /* libTMDBKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A0BDB6761B5767FE00E70654 /* libTMDBKit.a */; };
 		A0BDB6921B576A1F00E70654 /* TMDBClient.m in Sources */ = {isa = PBXBuildFile; fileRef = A0BDB6911B576A1F00E70654 /* TMDBClient.m */; };
@@ -170,6 +172,10 @@
 		A07A39831BA8ECD30059963B /* TMDBStatusResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMDBStatusResponse.m; sourceTree = "<group>"; };
 		A07A39851BA926B10059963B /* TMDBAccountStatesResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMDBAccountStatesResponse.h; sourceTree = "<group>"; };
 		A07A39861BA926B10059963B /* TMDBAccountStatesResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMDBAccountStatesResponse.m; sourceTree = "<group>"; };
+		A0846C4A1BD5DF9C000B37FB /* TMDBEpisode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMDBEpisode.h; sourceTree = "<group>"; };
+		A0846C4B1BD5DF9C000B37FB /* TMDBEpisode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMDBEpisode.m; sourceTree = "<group>"; };
+		A0846C501BD5E2C3000B37FB /* TMDBClient+Season.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TMDBClient+Season.h"; sourceTree = "<group>"; };
+		A0846C511BD5E2C3000B37FB /* TMDBClient+Season.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TMDBClient+Season.m"; sourceTree = "<group>"; };
 		A0BDB6761B5767FE00E70654 /* libTMDBKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libTMDBKit.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0BDB6791B5767FE00E70654 /* TMDBKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TMDBKit.h; sourceTree = "<group>"; };
 		A0BDB6811B5767FE00E70654 /* TMDBKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TMDBKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -228,6 +234,8 @@
 				A005AC6F1B967DDE00416DF3 /* TMDBTVShow.m */,
 				A005AC711B96ABCF00416DF3 /* TMDBSeason.h */,
 				A005AC721B96ABCF00416DF3 /* TMDBSeason.m */,
+				A0846C4A1BD5DF9C000B37FB /* TMDBEpisode.h */,
+				A0846C4B1BD5DF9C000B37FB /* TMDBEpisode.m */,
 				684C04201B6E202F006ECB16 /* TMDBImage.h */,
 				684C04211B6E202F006ECB16 /* TMDBImage.m */,
 				68117ADE1B83575600AA1BEE /* TMDBVideo.h */,
@@ -322,6 +330,8 @@
 				68B9F8F71B6CF4E9006758C2 /* TMDBClient+Movie.m */,
 				A005AC741B96AF5C00416DF3 /* TMDBClient+TVShow.h */,
 				A005AC751B96AF5C00416DF3 /* TMDBClient+TVShow.m */,
+				A0846C501BD5E2C3000B37FB /* TMDBClient+Season.h */,
+				A0846C511BD5E2C3000B37FB /* TMDBClient+Season.m */,
 				68B9F8F01B6CEDD1006758C2 /* TMDBClient+Genres.h */,
 				68B9F8F11B6CEDD1006758C2 /* TMDBClient+Genres.m */,
 				68B9F8EA1B6CEA40006758C2 /* TMDBClient+Discover.h */,
@@ -559,6 +569,7 @@
 				68B9F8F21B6CEDD1006758C2 /* TMDBClient+Genres.m in Sources */,
 				68B9F8E71B6CD037006758C2 /* TMDBUserList.m in Sources */,
 				68B9F8D31B68E568006758C2 /* TMDBGuestSessionResponse.m in Sources */,
+				A0846C4C1BD5DF9C000B37FB /* TMDBEpisode.m in Sources */,
 				A005AC761B96AF5C00416DF3 /* TMDBClient+TVShow.m in Sources */,
 				68B9F8EF1B6CEC47006758C2 /* TMDBGenre.m in Sources */,
 				68B9F8E41B6CCA08006758C2 /* TMDBPageResponse+Parse.m in Sources */,
@@ -568,6 +579,7 @@
 				68D7EDDE1B636931005F9855 /* TMDBMovie.m in Sources */,
 				68117AF21B87417300AA1BEE /* TMDBCreditsResponse.m in Sources */,
 				68B9F8D01B68D8A4006758C2 /* TMDBTokenResponse.m in Sources */,
+				A0846C521BD5E2C3000B37FB /* TMDBClient+Season.m in Sources */,
 				A07A39871BA926B10059963B /* TMDBAccountStatesResponse.m in Sources */,
 				684C04221B6E202F006ECB16 /* TMDBImage.m in Sources */,
 				68D7EDD01B626B6D005F9855 /* TMDBImageConfiguration.m in Sources */,
