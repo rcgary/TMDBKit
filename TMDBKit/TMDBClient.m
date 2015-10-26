@@ -19,6 +19,7 @@
 @end
 
 static NSString *apikey = @"2449630792c1f2e7c806b4ab2ee826b5";
+static NSString * const tmdb_serviceName = @"*.chaoruan.me";
 static NSString *dominURLString = @"https://api.themoviedb.org/3";
 
 @implementation TMDBClient
@@ -82,22 +83,24 @@ static NSString *dominURLString = @"https://api.themoviedb.org/3";
     {
         NSLog(@"%@",user);
     }
+    [[NSUserDefaults standardUserDefaults] setObject:self.sessionID forKey:tmdb_serviceName];
     
-    NSURLCredential *credential = [[NSURLCredential alloc] initWithUser:user.name
-                                                               password:sessionID
-                                                            persistence:NSURLCredentialPersistencePermanent];
-    [NSURLCredentialStorage.sharedCredentialStorage setDefaultCredential:credential
-                                                      forProtectionSpace:[self.class protectionSpace]];
+//    NSURLCredential *credential = [[NSURLCredential alloc] initWithUser:user.name
+//                                                               password:sessionID
+//                                                            persistence:NSURLCredentialPersistencePermanent];
+//    [NSURLCredentialStorage.sharedCredentialStorage setDefaultCredential:credential
+//                                                      forProtectionSpace:[self.class protectionSpace]];
     
 }
 
 + (RACSignal*)restoreCredential
 {
     NSURLCredential *credential = [NSURLCredentialStorage.sharedCredentialStorage defaultCredentialForProtectionSpace:[self protectionSpace]];
+    NSString *password = [[NSUserDefaults standardUserDefaults] objectForKey:tmdb_serviceName];
     
-    if (credential == nil || !credential.hasPassword) return [RACSignal error:[NSError errorWithDomain:@"No credential" code:1001 userInfo:nil]];
+    if (password.length == 0) return [RACSignal error:[NSError errorWithDomain:@"No credential" code:1001 userInfo:nil]];
     
-    return [RACSignal return:credential];
+    return [RACSignal return:password];
 }
 
 - (RACSignal *)removeCredential
@@ -105,14 +108,15 @@ static NSString *dominURLString = @"https://api.themoviedb.org/3";
     if (!self.sessionID) return [RACSignal empty];
     
     return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+        [[NSUserDefaults standardUserDefaults]removeObjectForKey:tmdb_serviceName];
         self.sessionID = nil;
         self.user = nil;
         
-        NSDictionary *credentialsDict = [NSURLCredentialStorage.sharedCredentialStorage credentialsForProtectionSpace:self.class.protectionSpace];
-        NSURLCredential *credential = [credentialsDict.objectEnumerator nextObject];
-        if (credential) {
-            [NSURLCredentialStorage.sharedCredentialStorage removeCredential:credential forProtectionSpace:self.class.protectionSpace];
-        }
+//        NSDictionary *credentialsDict = [NSURLCredentialStorage.sharedCredentialStorage credentialsForProtectionSpace:self.class.protectionSpace];
+//        NSURLCredential *credential = [credentialsDict.objectEnumerator nextObject];
+//        if (credential) {
+//            [NSURLCredentialStorage.sharedCredentialStorage removeCredential:credential forProtectionSpace:self.class.protectionSpace];
+//        }
         
         [subscriber sendCompleted];
         

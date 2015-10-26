@@ -53,8 +53,8 @@
 + (RACSignal *)authenticatedClientWithSavedCredentials
 {
     __block TMDBClient *client = nil;
-    return [[[[self restoreCredential] flattenMap:^RACStream *(NSURLCredential *credential) {
-        client = [TMDBClient clientWithSessionID:credential.password user:nil];
+    return [[[[self restoreCredential] flattenMap:^RACStream *(NSString *password) {
+        client = [TMDBClient clientWithSessionID:password user:nil];
         return [client userAccount];
     }] flattenMap:^RACStream *(TMDBUser *user) {
         [client updateSessionID:client.sessionID user:user];
