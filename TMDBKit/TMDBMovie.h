@@ -24,7 +24,7 @@
 @property (nonatomic, assign, readonly) BOOL video;
 @property (nonatomic, assign, readonly) NSInteger voteCount;
 @property (nonatomic, copy, readonly) NSString *imdbID;
-@property (nonatomic, assign, readonly) NSInteger runtime;
+@property (nonatomic, copy, readonly) NSString *runtime;
 
 @property (nonatomic, assign, readonly) double voteAverage;
 @property (nonatomic, copy, readonly) NSString *title;
