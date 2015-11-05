@@ -79,17 +79,8 @@ static NSString *dominURLString = @"https://api.themoviedb.org/3";
 {
     self.sessionID = sessionID;
     self.user = user;
-    if (!sessionID)
-    {
-        NSLog(@"%@",user);
-    }
+
     [[NSUserDefaults standardUserDefaults] setObject:self.sessionID forKey:tmdb_serviceName];
-    
-//    NSURLCredential *credential = [[NSURLCredential alloc] initWithUser:user.name
-//                                                               password:sessionID
-//                                                            persistence:NSURLCredentialPersistencePermanent];
-//    [NSURLCredentialStorage.sharedCredentialStorage setDefaultCredential:credential
-//                                                      forProtectionSpace:[self.class protectionSpace]];
     
 }
 
@@ -111,12 +102,6 @@ static NSString *dominURLString = @"https://api.themoviedb.org/3";
         [[NSUserDefaults standardUserDefaults]removeObjectForKey:tmdb_serviceName];
         self.sessionID = nil;
         self.user = nil;
-        
-//        NSDictionary *credentialsDict = [NSURLCredentialStorage.sharedCredentialStorage credentialsForProtectionSpace:self.class.protectionSpace];
-//        NSURLCredential *credential = [credentialsDict.objectEnumerator nextObject];
-//        if (credential) {
-//            [NSURLCredentialStorage.sharedCredentialStorage removeCredential:credential forProtectionSpace:self.class.protectionSpace];
-//        }
         
         [subscriber sendCompleted];
         
