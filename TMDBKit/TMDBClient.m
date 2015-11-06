@@ -57,6 +57,9 @@ static NSString *dominURLString = @"https://api.themoviedb.org/3";
 
 - (BOOL)isAuthenticated
 {
+    if (!self.sessionID) {
+        self.sessionID =  [[NSUserDefaults standardUserDefaults] objectForKey:tmdb_serviceName];
+    }
     return self.sessionID != nil;
 }
 
